@@ -13,9 +13,14 @@ interface Props {
   onViewHistory: (index: number) => void;
 }
 
+function getSavedProgressKeys(): string[] {
+  return Object.keys(localStorage).filter(k => k.startsWith('aims-progress-'));
+}
+
 export function HomePage({ examRepo, attemptRepo, onStartExam, onResumeExam, onViewHistory }: Props) {
   const exams = examRepo.getAll();
   const [attemptsByExam, setAttemptsByExam] = useState<Record<number, Attempt[]>>({});
+  const [progressTick, setProgressTick] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -28,6 +33,19 @@ export function HomePage({ examRepo, attemptRepo, onStartExam, onResumeExam, onV
   }, [attemptRepo, exams.length]);
 
   const totalQuestions = exams.reduce((sum, e) => sum + flattenExam(e).length, 0);
+  const savedProgressCount = getSavedProgressKeys().length;
+
+  const handleDiscardProgress = (index: number) => {
+    localStorage.removeItem(`aims-progress-${index}`);
+    setProgressTick(t => t + 1);
+  };
+
+  const handleClearAllProgress = () => {
+    if (confirm(`Discard saved progress for all ${savedProgressCount} exam(s)?`)) {
+      getSavedProgressKeys().forEach(k => localStorage.removeItem(k));
+      setProgressTick(t => t + 1);
+    }
+  };
 
   return (
     <div>
@@ -44,14 +62,31 @@ export function HomePage({ examRepo, attemptRepo, onStartExam, onResumeExam, onV
         }}>
           ISO/IEC 42001<br />Lead Implementer
         </h1>
-        <div style={{ fontSize: 13, color: '#999', marginTop: 12 }}>
-          {exams.length} mock exams &middot; {totalQuestions} questions &middot; 3 options &middot; randomized each attempt
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          marginTop: 12, flexWrap: 'wrap', gap: 12,
+        }}>
+          <div style={{ fontSize: 13, color: '#999' }}>
+            {exams.length} mock exams &middot; {totalQuestions} questions &middot; 3 options &middot; randomized each attempt
+          </div>
+          {savedProgressCount > 0 && (
+            <button
+              onClick={handleClearAllProgress}
+              style={{
+                padding: '6px 12px', background: 'transparent', color: '#844',
+                border: '1px solid #422', borderRadius: 6, cursor: 'pointer', fontSize: 11,
+                fontFamily: "'JetBrains Mono','SF Mono','Fira Code',monospace",
+              }}
+            >
+              Clear all progress ({savedProgressCount})
+            </button>
+          )}
         </div>
       </div>
 
       {exams.map((exam, i) => (
         <ExamCard
-          key={i}
+          key={`${i}-${progressTick}`}
           exam={exam}
           index={i}
           attempts={attemptsByExam[i] || []}
@@ -59,6 +94,7 @@ export function HomePage({ examRepo, attemptRepo, onStartExam, onResumeExam, onV
           hasSavedProgress={!!localStorage.getItem(`aims-progress-${i}`)}
           onStart={onStartExam}
           onResume={onResumeExam}
+          onDiscardProgress={handleDiscardProgress}
           onHistory={onViewHistory}
         />
       ))}

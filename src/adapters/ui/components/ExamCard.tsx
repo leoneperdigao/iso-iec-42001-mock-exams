@@ -10,10 +10,11 @@ interface Props {
   hasSavedProgress: boolean;
   onStart: (index: number) => void;
   onResume: (index: number) => void;
+  onDiscardProgress: (index: number) => void;
   onHistory: (index: number) => void;
 }
 
-export function ExamCard({ exam, index, attempts, timerMinutes, hasSavedProgress, onStart, onResume, onHistory }: Props) {
+export function ExamCard({ exam, index, attempts, timerMinutes, hasSavedProgress, onStart, onResume, onDiscardProgress, onHistory }: Props) {
   const qCount = flattenExam(exam).length;
   const scenarioCount = exam.sections.filter(s => s.type === 'scenario').length;
   const bestAttempt = attempts.length > 0
@@ -50,16 +51,33 @@ export function ExamCard({ exam, index, attempts, timerMinutes, hasSavedProgress
       </div>
       <div style={{ display: 'flex', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
         {hasSavedProgress && (
-          <button
-            onClick={() => onResume(index)}
-            style={{
-              padding: '8px 16px', background: '#1a1a2e', color: '#68f',
-              border: '1px solid #2a2a4a', borderRadius: 6, cursor: 'pointer', fontSize: 12,
-              fontFamily: "'JetBrains Mono','SF Mono','Fira Code',monospace",
-            }}
-          >
-            Resume
-          </button>
+          <>
+            <button
+              onClick={() => onResume(index)}
+              style={{
+                padding: '8px 16px', background: '#1a1a2e', color: '#68f',
+                border: '1px solid #2a2a4a', borderRadius: 6, cursor: 'pointer', fontSize: 12,
+                fontFamily: "'JetBrains Mono','SF Mono','Fira Code',monospace",
+              }}
+            >
+              Resume
+            </button>
+            <button
+              onClick={() => {
+                if (confirm(`Discard saved progress for ${exam.title}?`)) {
+                  onDiscardProgress(index);
+                }
+              }}
+              title="Discard saved progress"
+              style={{
+                padding: '8px 12px', background: 'transparent', color: '#844',
+                border: '1px solid #422', borderRadius: 6, cursor: 'pointer', fontSize: 12,
+                fontFamily: "'JetBrains Mono','SF Mono','Fira Code',monospace",
+              }}
+            >
+              Discard
+            </button>
+          </>
         )}
         <button
           onClick={() => onStart(index)}
