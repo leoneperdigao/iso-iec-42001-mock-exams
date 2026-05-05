@@ -15,7 +15,7 @@ A comprehensive mock exam system for preparing for the **PECB ISO/IEC 42001 Lead
 
 ## Features
 
-**480 questions** across 6 full-length simulation exams, each mirroring the real PECB certification format:
+**480 questions across 6 full-length simulation exams** (each mirroring the real PECB certification format), plus a **gap-targeted Mock Exam 7** (~56 questions) drilling named lists, Annex A control IDs, and Domain 6 certification-audit numerics that the full-length exams under-train:
 
 - **80 questions per exam** (real exam: 80 questions)
 - **3-hour timer** (real exam: 180 minutes)
@@ -52,6 +52,7 @@ A comprehensive mock exam system for preparing for the **PECB ISO/IEC 42001 Lead
 | Mock Exam 4 | Full-Length Simulation D | Media, Telecom, Government |
 | Mock Exam 5 | Full-Length Simulation E | Multinational, Generative AI |
 | Mock Exam 6 | Full-Length Simulation F | Edge Cases, Emerging Tech |
+| Mock Exam 7 | Recall & Mechanics — gap-targeted | Named lists, Annex A control IDs, certification audit numerics |
 
 ## Quick Start
 

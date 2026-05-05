@@ -5,6 +5,7 @@ import { EXAM_3 } from './exam3';
 import { EXAM_4 } from './exam4';
 import { EXAM_5 } from './exam5';
 import { EXAM_6 } from './exam6';
+import { EXAM_7 } from './exam7';
 
 export const EXAMS: Exam[] = [
   EXAM_1,
@@ -13,4 +14,5 @@ export const EXAMS: Exam[] = [
   EXAM_4,
   EXAM_5,
   EXAM_6,
+  EXAM_7,
 ];

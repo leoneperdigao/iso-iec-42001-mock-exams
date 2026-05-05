@@ -12,52 +12,52 @@ export const EXAM_2: Exam = {
         {
           question: "Marco identifies significant variation in sensor data quality across plants. Under Clause 6.1 risk assessment, how should this data quality variation be treated?",
           options: [
-            "Exclude the plants with lower data quality from the AIMS scope until they can be upgraded to match the data quality standards of the best-performing plants",
+            "Treat data quality as a Clause 7.5 documented information issue, recording the variation in the controls log and addressing the differences through document control rather than as input to the Clause 6.1 risk identification activity",
             "Assess the data quality variation as a risk factor that affects AI system reliability differently across locations, implement controls proportionate to each plant's data quality level, and establish minimum data quality thresholds below which AI predictions should not be relied upon",
-            "Standardize all sensor systems across all plants before proceeding with AIMS implementation, since consistent data quality is a prerequisite for meaningful AI governance"
+            "Quantify the variation as an opportunity under Clause 6.1.1, since differing data conditions allow the organization to pilot multiple data-handling approaches in parallel, then scale the most effective one as a single corporate standard"
           ],
           correct: 1,
-          explanation: "Risk assessment should account for varying conditions and implement proportionate controls. Excluding plants (option A) narrows scope without addressing the risk. Requiring full standardization before proceeding (option C) delays governance unnecessarily. A risk-based approach with defined thresholds acknowledges varying conditions while maintaining appropriate controls."
+          explanation: "Clause 6.1 requires identifying and treating risks proportionate to context. The correct option does this with location-specific controls and defined thresholds. Option A miscategorises a risk-identification matter as a documentation issue under Clause 7.5. Option C reframes a risk as a learning opportunity but ignores the immediate reliability differences that the standard requires to be assessed and treated."
         },
         {
           question: "The two plants with intermittent connectivity experience data gaps. Under Annex A controls for data quality and Clause 8.1 operational controls, what is the most appropriate approach?",
           options: [
-            "Implement edge computing at those plants so AI inference runs locally without requiring connectivity, eliminating the data gap issue entirely",
+            "Apply A.7.4 data preparation controls to require automatic statistical imputation for any missing samples so the inference pipeline always receives a complete dataset, removing the need for separate operational procedures during connectivity loss",
             "Establish controls that define how the AI system should operate during data gaps, including fallback procedures, data imputation governance, maximum acceptable gap durations, and requirements for validating predictions made with incomplete data",
-            "Disable AI-based predictive maintenance at those plants and rely solely on traditional scheduled maintenance until connectivity is reliably established"
+            "Treat the connectivity gap as a Clause 8.3 risk-treatment-only matter, accept the residual risk of degraded predictions in the SoA, and document the acceptance rather than introducing additional Clause 8.1 operational provisions"
           ],
           correct: 1,
-          explanation: "Operational controls should define how the system operates under degraded conditions. Edge computing (option A) addresses one technical solution but does not address the governance of operating with imperfect data. Disabling the system entirely (option C) is disproportionate. Controls for operating during data gaps, including boundaries and validation requirements, provide the appropriate governance framework."
+          explanation: "Clause 8.1 requires controlled processes that handle foreseeable degraded conditions, with clear fallback rules and validation. Option A overstates the role of imputation: silently filling gaps is not governance and may mask real outages. Option C confuses risk acceptance with operational planning; accepting residual risk does not remove the need to define how the system actually behaves when data is missing."
         },
         {
           question: "Maintenance technicians sometimes disagree with the AI's failure predictions. Under Annex A controls related to human oversight, what governance structure best addresses this?",
           options: [
             "Establish a clear escalation process where technician disagreements are documented, analyzed, and used as feedback to improve the AI model, while maintaining defined decision authority that specifies when human judgment can override AI predictions and when AI recommendations must be followed",
-            "Always defer to the AI prediction since the system processes more data than any individual technician can consider, and human override introduces inconsistency that undermines the value of the AI system",
-            "Always defer to the technician's judgment since they have direct physical observation of the equipment that the AI cannot replicate, making their assessment inherently more reliable"
+            "Implement a confidence-threshold rule whereby technicians may only override the AI when its prediction confidence is below 80%, with all higher-confidence predictions executed automatically to keep oversight proportionate to model certainty",
+            "Channel all disagreements to the model development team under A.6.2.2 system requirements so the underlying training data can be corrected, leaving day-to-day operational override decisions to local plant supervisors without a defined escalation path"
           ],
           correct: 0,
-          explanation: "Effective human oversight requires a structured process for handling disagreements, not absolute deference to either the AI or the human. The governance structure should document disagreements, use them for improvement, and define clear decision authority. Always deferring to AI (option B) eliminates human oversight. Always deferring to humans (option C) negates the AI's value."
+          explanation: "Annex A human-oversight controls require defined decision authority plus a feedback loop. Option B replaces human judgement with a single numeric threshold, removing meaningful oversight when confidence happens to be high. Option C routes disagreements only to development under A.6.2.2 and leaves operational authority undefined, so day-to-day overrides are not actually governed."
         },
         {
           question: "The COO wants to extend the system to predict product quality defects using video feeds. Under Clause 6.1 and operational planning (Clause 8.1), what planning considerations are most important?",
           options: [
             "Conduct a new risk assessment for the expanded functionality including privacy implications of video surveillance, assess the impact on existing data infrastructure, evaluate whether current competencies cover computer vision technology, and determine new interested party requirements",
-            "Add the quality prediction module to the existing AIMS scope without additional planning since predictive maintenance and quality prediction use the same underlying AI technology platform",
-            "Commission a proof-of-concept before any AIMS planning, since the technical feasibility must be proven before governance can be designed"
+            "Treat the extension as a Clause 6.3 planned change only, updating the existing risk register and SoA entries to reflect the new modality and proceeding once top management approves the change request, since the AIMS scope already covers predictive analytics",
+            "Run the new computer-vision module as a parallel pilot outside the AIMS for the first six months, then bring it into scope under Clause 8.1 once production data confirms the privacy and bias profile observed in early operation"
           ],
           correct: 0,
-          explanation: "Extending AI capabilities requires comprehensive planning including new risk assessment, privacy considerations for video data, competence evaluation for new AI modalities, and stakeholder analysis. Simply extending scope without planning (option B) ignores significant new risks. While technical feasibility matters, AIMS planning should be concurrent with technical development (option C), not sequential."
+          explanation: "Adding a new modality with new data types requires fresh Clause 6.1 risk assessment, Clause 8.1 operational planning, and reassessment of competence and interested parties. Option B treats it as a routine change under Clause 6.3 and skips dedicated risk and impact analysis. Option C deliberately operates a production-affecting AI system outside the AIMS, which contradicts scope and governance requirements."
         },
         {
           question: "Marco needs to define AI objectives under Clause 6.2 for the predictive maintenance system. Which set of objectives best aligns with the standard's requirements?",
           options: [
             "Reduce unplanned downtime by 30% within 12 months, achieve 95% prediction accuracy for critical equipment failures, and implement AI governance awareness training for all maintenance staff across all plants within 6 months",
-            "Achieve the best-in-class predictive maintenance performance in the steel manufacturing sector, as measured by industry benchmarks",
-            "Minimize false positive predictions to zero, since false alarms waste maintenance resources and erode trust in the AI system"
+            "Maintain prediction accuracy above the average of the three top vendors of predictive maintenance software each quarter, as benchmarked by an industry analyst report, and align AI objectives with corporate KPIs at the next annual planning cycle",
+            "Adopt the eleven Annex C.2 objectives verbatim as the AIMS objectives so that all standard-recognised AI concerns are explicitly committed to, with progress reviewed annually at management review under Clause 9.3"
           ],
           correct: 0,
-          explanation: "Clause 6.2 requires objectives that are measurable, monitored, communicated, and updated. Option A provides specific, measurable objectives with timeframes. Industry benchmarking (option B) is vague and depends on external factors. Zero false positives (option C) is likely unrealistic and focuses on a single metric without balance."
+          explanation: "Clause 6.2 requires objectives that are measurable, monitored, with timeframes and assigned resources. Option A meets these. Option B ties accuracy to a moving external benchmark, so the target is neither under the organisation's control nor consistently measurable. Option C confuses Annex C.2 (a list of potential AI objectives to consider) with a mandatory checklist and produces non-specific, non-measurable goals."
         }
       ]
     },
@@ -70,52 +70,52 @@ export const EXAM_2: Exam = {
         {
           question: "Consumer groups allege algorithmic pricing discrimination. Under Clause 4.2 interested party analysis and Annex A controls, how should Elena address this?",
           options: [
-            "Dismiss the allegations as a competitive tactic by consumer advocacy groups and focus the interested party analysis on customers, regulators, and shareholders who have direct contractual or legal relationships with ShopSmart",
+            "Record the consumer groups in the interested party register but treat their claims as out of scope for the AIMS until a regulator formally adopts pricing-fairness rules, since Clause 4.2 only requires action on legally binding requirements",
             "Identify consumer protection groups as relevant interested parties, determine their specific requirements regarding pricing transparency and fairness, assess whether the dynamic pricing algorithm creates discriminatory outcomes, and establish controls to monitor and address pricing equity",
-            "Commission an independent academic study on algorithmic pricing fairness and defer AIMS implementation until the study concludes, since the organization cannot implement appropriate controls without understanding the full extent of the issue"
+            "Refer the matter to the corporate communications function to publish a fairness statement on the pricing algorithm and rely on that disclosure as the Annex A.5.5 control evidence that societal impacts have been addressed"
           ],
           correct: 1,
-          explanation: "Consumer groups are relevant interested parties under Clause 4.2. Their requirements should be identified and the pricing system should be assessed for discriminatory patterns. Dismissing them (option A) ignores a legitimate stakeholder. Deferring implementation pending a study (option C) is unnecessary - the organization can implement governance while investigating the specific concerns."
+          explanation: "Clause 4.2 requires identifying relevant interested parties and the requirements the organisation chooses to address, not only legally binding ones. Option A misreads Clause 4.2 by treating non-binding requirements as out of scope. Option C substitutes external messaging for genuine impact assessment; A.5.5 expects analysis of societal impacts on individuals and groups, not a public statement."
         },
         {
           question: "The marketing team objects to transparency requirements, citing competitive concerns. Under the AIMS framework, how should this tension be resolved?",
           options: [
-            "Exempt the recommendation algorithm from transparency controls since Annex A allows exclusion of controls when there is a legitimate business justification",
+            "Exclude A.8.2 information for interested parties from the SoA on the grounds that the recommendation algorithm is a trade secret, and document the exclusion as a justified business decision approved by the AIMS owner",
             "Implement graduated transparency that provides customers with meaningful information about how recommendations are generated without revealing proprietary algorithmic details, while ensuring the SoA documents the rationale for the level of transparency adopted",
-            "Override the marketing team's objections since ISO/IEC 42001 requires full algorithmic transparency and competitive concerns cannot justify non-disclosure"
+            "Apply A.8.3 transparency obligations only to enterprise clients who sign a confidentiality agreement, since A.8 controls are framed around documented information for users rather than uniform disclosure to all consumers"
           ],
           correct: 1,
-          explanation: "Transparency does not require revealing proprietary details. A graduated approach provides meaningful information to stakeholders while protecting legitimate competitive interests. Controls can be tailored, not simply exempted (option A). The standard does not require full algorithmic disclosure (option C), but it does require appropriate transparency."
+          explanation: "Annex A transparency controls expect appropriate, layered information for affected parties without forcing disclosure of proprietary detail. Option A confuses non-applicability with commercial preference; trade secrecy does not justify excluding A.8 controls when external users are affected. Option C narrows A.8.3 to contracted clients, but the controls cover individuals affected by the system, not just those under NDA."
         },
         {
           question: "ShopSmart uses third-party AI models for image recognition. Under Clause 4.3 scope definition and Annex A controls for third-party relationships, how should this be governed?",
           options: [
-            "Exclude third-party models from the AIMS scope and rely on the third-party vendor's own AI governance practices, since the organization cannot control how external models are developed",
+            "Place the third-party models in scope only when ShopSmart is acting as an AI developer, and treat the image-recognition vendor as out of scope under the A.10 customer-side controls, since ShopSmart is the user of the models rather than their producer",
             "Include the use of third-party AI models within the AIMS scope, establish controls for vendor evaluation, model validation, performance monitoring, and incident management, and define the boundary of responsibility between ShopSmart and the vendor",
-            "Require the third-party vendor to obtain ISO/IEC 42001 certification as a contractual condition before their models can be used within ShopSmart's platform"
+            "Map the vendor relationship to A.10.3 supplier controls only, defer all model validation to the vendor's own quality processes, and rely on contractual SLAs to provide assurance instead of internal monitoring"
           ],
           correct: 1,
-          explanation: "The use of third-party AI models is within the organization's scope as it uses these systems. Controls should govern the relationship, validation, and monitoring. Exclusion (option A) leaves a dependency unmanaged. Requiring vendor certification (option C) may be impractical and is not a standard requirement, though contractual governance expectations are appropriate."
+          explanation: "Clause 4.3 brings AI systems used by the organisation into scope; A.10 controls apply to third-party relationships in both directions. Option A misreads A.10 as developer-only and removes the vendor from oversight. Option C selects a single supplier control and outsources validation entirely, which leaves performance monitoring and incident handling on the vendor side without internal verification."
         },
         {
           question: "ShopSmart operates across 30 countries with varying data protection requirements. Under Clause 4.1 and planning requirements, what is the most practical governance approach?",
           options: [
-            "Implement the most restrictive country's data protection requirements across all operations, ensuring compliance everywhere but potentially limiting functionality in less restrictive markets",
+            "Anchor the AIMS to a single recognised reference framework such as the EU GDPR and treat alignment with that framework as evidence of conformity in all 30 markets, on the basis that it represents the most stringent regime",
             "Develop a baseline AI governance framework that meets common requirements across jurisdictions, with jurisdiction-specific overlays that address local regulatory requirements, and a mechanism for monitoring regulatory changes across all markets",
-            "Implement country-specific AI governance for each of the 30 markets, ensuring precise compliance with each jurisdiction's unique requirements"
+            "Define separate AIMS scope statements per country under Clause 4.3, each with its own risk assessment, SoA, and management review cycle, so that local compliance evidence is generated independently in every jurisdiction"
           ],
           correct: 1,
-          explanation: "A baseline with jurisdiction-specific overlays balances comprehensive governance with practical implementation. Applying the most restrictive standard everywhere (option A) may be unnecessarily limiting. Individual governance per country (option C) is impractical at scale and creates inconsistency. A layered approach provides both consistency and local compliance."
+          explanation: "Clause 4.1 requires understanding the full external context across jurisdictions and Clause 6.1 expects a coherent risk treatment. Option A treats GDPR alignment as a universal substitute, which can both over- and under-shoot local AI-specific requirements. Option C fragments the AIMS into 30 separate systems, which is impractical and undermines consistent governance and reporting at the corporate level."
         },
         {
           question: "Elena needs to establish Clause 7.4 communication processes for the AIMS. Given ShopSmart's global operation with multiple AI systems, what communication challenge is most critical?",
           options: [
-            "Translating all AIMS documentation into the languages of all 30 countries to ensure global accessibility",
+            "Defining the internal cadence of AIMS communications, such as monthly cross-functional steering committee meetings and quarterly board updates, which Clause 7.4 specifies as the primary communication output for management systems of this scale",
             "Establishing clear communication channels that inform relevant stakeholders about how AI is used in their interactions with the platform, how they can obtain information about AI-driven decisions, and how they can raise concerns or seek redress, while balancing transparency with commercially sensitive information",
-            "Creating a centralized AI communications team that controls all messaging about AI to ensure consistency and prevent unauthorized disclosures about algorithmic approaches"
+            "Aligning external communications with the marketing brand voice so that descriptions of AI features remain consistent across the 30 markets, with regional marketing leads owning the wording approved by central legal review"
           ],
           correct: 1,
-          explanation: "Clause 7.4 communication must address stakeholder information needs about AI system interactions. Document translation (option A) is an operational detail, not the core communication challenge. Centralizing all communication (option C) may be practical but the critical challenge is establishing effective channels for stakeholder information, inquiry, and redress."
+          explanation: "Clause 7.4 requires determining what to communicate, when, with whom and how, including external interested parties. The correct option captures stakeholder-facing channels for information, inquiry and redress. Option A reduces 7.4 to internal meeting cadence. Option C focuses on brand consistency and ignores the substantive content about AI use, decision information and complaint pathways that 7.4 expects to address."
         }
       ]
     },
@@ -128,52 +128,52 @@ export const EXAM_2: Exam = {
         {
           question: "The AI system blocked legitimate traffic while responding to a real threat. Under Clause 10.1, how should this incident be classified and managed?",
           options: [
-            "This is a success story since the AI correctly identified the threat; the collateral impact on legitimate traffic is an acceptable cost of effective threat detection and does not constitute a nonconformity",
+            "This is an opportunity for improvement under Clause 10.1 rather than a nonconformity, since the AI control objective of detecting threats was met and the collateral effect can be tracked as enhancement input to the next management review cycle",
             "This is a nonconformity related to the automated response controls: while the detection was correct, the response action caused unintended harm, indicating that the operational controls for automated response are inadequate and require corrective action",
-            "This is an external event beyond the organization's control, since zero-day attacks are unpredictable, and the response should be treated as an act of force majeure rather than a management system failure"
+            "This is a correction event under ISO 9000 terminology: the blocking action immediately eliminated the threat exposure, so the organisation should record the correction in the incident log and proceed without invoking the corrective action process"
           ],
           correct: 1,
-          explanation: "The incident reveals a gap in operational controls. While detection was correct, the automated response caused harm, indicating the response controls need improvement. This is not simply a success (option A) because the outcome caused client loss. It is not force majeure (option C) because the response action was within the organization's control even though the attack was not."
+          explanation: "Operational controls for automated response failed to prevent harm to a client, which is a nonconformity requiring corrective action under Clause 10.1. Option A reframes a control failure as mere improvement input and avoids treating cause. Option C confuses correction (eliminating a detected nonconformity) with corrective action (eliminating its cause); both are needed when harm has been caused, not just an entry in a log."
         },
         {
           question: "The automated response thresholds have not been reviewed since initial deployment. Under Clause 9.1 and operational controls, what systemic issue does this reveal?",
           options: [
             "This indicates that the monitoring and measurement program does not include periodic review of AI system parameters, which is essential for systems operating in dynamic threat environments where the effectiveness of static thresholds degrades over time",
-            "This is acceptable for the first year of AIMS operations, as the standard recognizes that organizations need time to establish baseline performance before adjusting parameters",
-            "This is primarily an IT operations issue that falls outside the AIMS scope, since threshold configuration is a technical setting managed by the security operations center"
+            "This is a Clause 6.3 planning-of-changes gap rather than a Clause 9.1 issue, since threshold updates would constitute planned changes to the AIMS that should have been scheduled as part of the original implementation roadmap",
+            "This is an Annex A.6.2.6 operation-and-monitoring control gap that sits outside Clause 9.1 monitoring obligations, since 9.1 covers AIMS performance metrics rather than the runtime parameters of an individual AI system"
           ],
           correct: 0,
-          explanation: "AI systems operating in dynamic environments require periodic review of operational parameters. Static thresholds in a changing threat landscape represent a monitoring gap under Clause 9.1. There is no grace period for parameter review (option B), and threshold governance for AI systems is within AIMS scope (option C) as it directly affects AI system behavior."
+          explanation: "Clause 9.1 monitoring covers AI system performance, including the parameters that drive that performance. Option B reframes the gap as a one-off Clause 6.3 change that was missed; the actual issue is the absence of a recurring 9.1 review process. Option C creates a false separation between A.6.2.6 and Clause 9.1 — operational controls feed measurement results into 9.1, they are not mutually exclusive."
         },
         {
           question: "The client SLA does not address AI-specific risks. Under Annex A controls and Clause 7.4 communication requirements, what should Yuki recommend?",
           options: [
             "Update SLAs to include AI-specific provisions addressing automated response behavior, false positive rates, notification procedures for AI-driven actions, limitations of AI detection capabilities, and the client's role in validating AI-recommended actions",
-            "Keep SLAs focused on traditional service metrics like uptime and response time, since AI-specific SLA terms would expose the organization to liability by explicitly acknowledging AI limitations",
-            "Replace SLAs with AI-specific service agreements that comprehensively govern the AI relationship, since traditional SLAs are fundamentally incompatible with AI service delivery"
+            "Address AI-specific risks through Clause 7.3 awareness materials for client staff rather than the SLA, since SLAs are commercial contract instruments and Clause 7.4 communication is delivered through training rather than contractual terms",
+            "Add AI-specific provisions only to new client SLAs going forward, since A.10 third-party controls apply at contract formation and retroactively amending existing SLAs falls outside Clause 7.4 obligations"
           ],
           correct: 0,
-          explanation: "Annex A controls and Clause 7.4 require appropriate communication with interested parties about AI systems. SLAs should include AI-specific provisions to set clear expectations. Avoiding AI-specific terms (option B) creates unmanaged expectations and does not reduce actual liability. Complete replacement of SLAs (option C) is unnecessary - existing SLAs should be enhanced, not replaced."
+          explanation: "Clause 7.4 requires planned communication with external interested parties about AI system behavior, and A.10 customer-facing controls expect SLA-level expectations to be set. Option B confuses Clause 7.3 (internal awareness) with 7.4 (external communication) — awareness materials do not bind service expectations. Option C misuses A.10: existing client relationships also require accurate AI-specific expectations, not only new contracts."
         },
         {
           question: "Internal monitoring did not track false positive rates for automated responses. Under Clause 9.1, what monitoring enhancement is most important?",
           options: [
             "Implement tracking of false positive and false negative rates specifically for automated response actions, distinguished from detection-only alerts, with defined thresholds that trigger review and adjustment of response parameters",
-            "Implement comprehensive logging of all AI system actions to create a complete audit trail, since monitoring requires capturing every decision the AI makes",
-            "Implement real-time dashboards showing all AI system metrics to enable continuous human supervision of all automated responses"
+            "Implement aggregate analyst satisfaction surveys covering the AI system's helpfulness, since Clause 9.1.2 customer satisfaction methods are the appropriate way to evaluate AI effectiveness in a managed-service context",
+            "Implement annual penetration tests against the AI response engine, since Clause 9.1 requires evaluation of effectiveness and security testing is the recognized 9.1 method for security-domain AI systems"
           ],
           correct: 0,
-          explanation: "The monitoring gap was specifically about automated response accuracy. Tracking false positive rates for responses (which directly cause business impact) is the most important enhancement. Comprehensive logging (option B) is valuable but does not address the specific gap in outcome monitoring. Real-time dashboards for all actions (option C) may be impractical and does not inherently address the measurement gap."
+          explanation: "Clause 9.1 requires that the organization determine what needs to be monitored and that the methods produce comparable, reproducible results — the specific gap is outcome accuracy of automated responses, so false-positive/negative tracking directly addresses it. Option B confuses 9.1.2 ISO 9001 satisfaction methods with AI performance measurement. Option C miscasts penetration testing (an A.6 verification control) as the 9.1 monitoring method, which it is not."
         },
         {
           question: "Yuki is preparing for the surveillance audit following this incident. What approach best demonstrates AIMS effectiveness to the auditors?",
           options: [
             "Prepare a detailed incident report showing the complete timeline of events, root cause analysis, corrective actions implemented, and evidence that the AIMS processes functioned correctly by detecting the need for improvement and driving change",
-            "Minimize discussion of the incident and focus the audit preparation on areas where the AIMS is performing well, since highlighting incidents may create a negative impression",
-            "Request a postponement of the surveillance audit until all corrective actions are fully implemented and verified, since presenting incomplete corrective actions demonstrates system immaturity"
+            "Document the incident as a correction in the change log under Clause 6.3 and present the firmware patch as evidence, since the surveillance audit assesses whether planned changes were executed rather than whether nonconformities were processed under Clause 10.2",
+            "Request that the certification body convert the surveillance audit into a special audit limited to the incident scope, since standard surveillance audits assume no major nonconformities and a separate process is required when one has occurred"
           ],
           correct: 0,
-          explanation: "Demonstrating how the AIMS handled an incident - detection, analysis, corrective action - actually shows the management system working effectively. Minimizing the incident (option B) is counterproductive since auditors may discover it anyway, and transparent handling demonstrates maturity. Postponing (option C) is unnecessary and may not be possible."
+          explanation: "Surveillance audits sample the full AIMS, and Clause 10.2 evidence (NC handling, root cause, corrective action effectiveness) is exactly what auditors expect. Option B confuses correction with corrective action and reframes a 10.2 nonconformity as a 6.3 planned change. Option C invents a 'special audit' process — ISO/IEC 17021 surveillance routinely covers prior nonconformities; no conversion is required."
         }
       ]
     },
@@ -186,52 +186,52 @@ export const EXAM_2: Exam = {
         {
           question: "The system processes data from minors aged 6-18. Under Clause 4.2 interested party analysis and AI risk assessment, who must be identified as interested parties?",
           options: [
-            "Schools and education authorities as the primary interested parties, since they are the contractual customers and bear responsibility for their students' data",
+            "Schools, parents, and education authorities only, since Clause 4.2 identifies parties relevant to the AIMS through contractual or legal relationships and minors interact with the system through these intermediaries rather than as parties themselves",
             "Students, parents/guardians, teachers, schools, education authorities, data protection authorities, and child protection organizations, with recognition that minors require enhanced protections and that parental interests may differ from student interests",
-            "Parents and guardians as the sole interested parties for minor students, since children cannot be independent interested parties under the management system framework"
+            "Schools, education authorities, and the AI development team, since Clause 4.2 distinguishes external interested parties (customers, regulators) from internal ones (developers) and individual end users are addressed through Clause 9.1.2 satisfaction methods"
           ],
           correct: 1,
-          explanation: "Processing data from minors requires identifying a broad set of interested parties with enhanced protections. This includes the minors themselves (who have rights regardless of age), parents/guardians, educators, and relevant authorities. Neither limiting to contractual parties (option A) nor excluding children as stakeholders (option C) adequately addresses the context."
+          explanation: "Clause 4.2 requires identifying interested parties relevant to the AIMS, and ISO/IEC 42001 explicitly expects affected individuals — including minors — to be considered. Option A treats minors as out of scope because they lack contracts, ignoring that 4.2 covers parties affected by AI system outcomes. Option C confuses 4.2 (interested parties) with internal role identification under 5.3 and misuses 9.1.2 customer satisfaction as a substitute for stakeholder identification."
         },
         {
           question: "The predictive analytics component may create self-fulfilling prophecies by labeling students as 'at-risk.' Under Annex A controls and AI impact assessment requirements, what risk does this represent?",
           options: [
             "A feedback loop risk where the AI system's predictions influence the environment that generates the data used for future predictions, potentially reinforcing initial classifications regardless of student effort or improvement",
-            "A data quality risk since the historical data used to identify at-risk students may not accurately represent current student populations and learning conditions",
-            "A transparency risk since students and parents may not be informed that predictive classifications are being made about academic performance"
+            "A concept drift risk where the relationship between input features and the at-risk label changes over time as student cohorts and curricula evolve, requiring periodic retraining to keep classifications statistically valid",
+            "A model overfitting risk where the predictive analytics has memorized historical patterns of struggling students, producing labels that match the training distribution but generalize poorly to new cohorts"
           ],
           correct: 0,
-          explanation: "Self-fulfilling prophecy is a feedback loop risk: the prediction changes behavior toward the student, which reinforces the prediction. This is distinct from data quality (option B) and transparency (option C), though all three risks may be present. The feedback loop risk is the most directly related to the self-fulfilling prophecy concern."
+          explanation: "A self-fulfilling prophecy is specifically a feedback loop: the AI's label changes how teachers and the platform treat the student, which then produces the very outcome the model predicted. Option B describes concept drift (changing input/output relationship over time), a different phenomenon. Option C describes overfitting (poor generalization), a model-quality issue independent of whether predictions reshape student outcomes."
         },
         {
           question: "The essay assessment NLP was trained primarily on English-language academic texts. Under Clause 6.1 risk assessment and Annex A fairness controls, what is the most comprehensive risk characterization?",
           options: [
-            "This is a bias risk that will result in systematically lower scores for non-native English speakers, and the model should be disabled for non-English speaking students until retraining is complete",
+            "This is a training-data representativeness defect that should be characterized as a Clause 7.5 documented-information gap, since the AIMS need only record the training-corpus composition to satisfy A.7 data controls and downstream score effects sit outside the AIMS",
             "This represents a risk of inequitable assessment that encompasses linguistic bias, cultural bias in evaluating argumentation styles, and potentially discriminatory outcomes for students from diverse backgrounds, requiring analysis of actual assessment patterns across student demographics",
-            "This is a technical limitation that should be documented in the system's user guide, informing teachers that essay scores may be less reliable for non-native English speakers"
+            "This is a Clause 8.4 operational impact-assessment finding scoped only to non-English-speaking students, allowing risk treatment to be narrowly framed as a language-coverage extension rather than a fairness investigation across student backgrounds"
           ],
           correct: 1,
-          explanation: "The risk encompasses multiple dimensions beyond linguistic capability including cultural norms in academic writing and potential discrimination. A comprehensive characterization enables appropriate risk treatment. Disabling the model (option A) may be premature without evidence analysis. Simply documenting the limitation (option C) does not treat the risk."
+          explanation: "Clause 6.1 risk assessment and A.7 data-quality controls require characterizing fairness risks across the affected population, including cultural and discriminatory dimensions, not only language coverage. Option A misuses Clause 7.5: documenting the corpus does not characterize the risk. Option C misapplies Clause 8.4 by narrowing scope to one group, missing cultural-bias and discrimination dimensions that fairness controls explicitly address."
         },
         {
           question: "Parents and teachers have different expectations about AI in education. Under Clause 4.2, how should conflicting interested party requirements be managed?",
           options: [
-            "Prioritize teacher requirements since they are the professional users with educational expertise, and parent requirements should be secondary considerations in the AIMS design",
+            "Capture only the requirements that overlap between parents and teachers in the Clause 4.2 register, since requirements not held in common cannot be considered relevant to the AIMS and conflicting expectations resolve themselves once excluded",
             "Document both sets of requirements, analyze areas of conflict, establish mechanisms for balancing competing expectations, and ensure the AI policy and system design reflect considered decisions about how conflicts are resolved",
-            "Conduct surveys to determine which stakeholder group has stronger objections to AI, and align the AIMS with the majority view to minimize resistance"
+            "Defer the conflict to the Clause 9.3 management review with no pre-analysis, since top management is the only authority that can decide between competing interested-party requirements and pre-work would pre-empt that decision"
           ],
           correct: 1,
-          explanation: "Conflicting interested party requirements must be documented and analyzed. The AIMS should establish mechanisms for resolving conflicts through reasoned decisions, not by prioritizing one group (option A) or following majority opinion (option C). Both parent and teacher perspectives are legitimate and must be considered in governance design."
+          explanation: "Clause 4.2 requires identifying which interested-party requirements are relevant to the AIMS and addressing them in policy and design — conflicts must be analyzed, not eliminated or deferred. Option A misuses 4.2 by filtering out non-overlapping requirements, which removes legitimate stakeholder needs. Option C confuses 4.2 (ongoing analysis) with 9.3 (management review of inputs); 9.3 expects analyzed inputs, not raw conflicts."
         },
         {
           question: "Dr. Hassan is classifying LearnAdapt's AI systems using AI terminology from ISO/IEC 22989. The adaptive learning path system adjusts content based on student performance. What type of AI system characteristic is most relevant to the AIMS risk assessment?",
           options: [
             "The system's autonomy level, since the degree to which the system independently makes decisions about learning content without teacher intervention determines the risk profile and required controls",
-            "The system's computational complexity, since more complex algorithms create greater governance challenges and require more sophisticated monitoring",
-            "The system's training data volume, since the amount of student data processed is the primary determinant of AI risk in educational contexts"
+            "The system's model-architecture family (e.g., transformer vs. recurrent network), since ISO/IEC 22989 ties risk classification to the underlying algorithmic family and adaptive systems built on different architectures present different governance profiles",
+            "The system's deployment topology (cloud, on-premises, or hybrid), since ISO/IEC 22989 treats deployment context as the leading risk-classification dimension for adaptive AI in shared-infrastructure environments"
           ],
           correct: 0,
-          explanation: "The autonomy level - how independently the system makes decisions about learning content - is the most relevant characteristic for risk assessment. Higher autonomy requires stronger controls for oversight and intervention. Computational complexity (option B) and data volume (option C) are relevant technical factors but do not directly determine the governance risk profile."
+          explanation: "ISO/IEC 22989 characterizes AI systems by properties such as autonomy and adaptiveness — autonomy level directly drives the AIMS risk profile because it determines how much human oversight is feasible. Option B treats algorithmic family as a 22989 risk dimension, which it is not. Option C confuses deployment topology (an A.4 resource concern) with 22989 system characteristics relevant to AIMS risk assessment."
         }
       ]
     },
@@ -245,51 +245,51 @@ export const EXAM_2: Exam = {
           question: "The drone imaging accuracy degrades in certain weather conditions but this is not documented. Under Annex A controls on AI system documentation, what type of gap is this?",
           options: [
             "A transparency gap: the known limitations of the AI system are not documented and communicated to users, preventing them from making informed decisions about when to rely on the system's assessments",
-            "A testing gap: the system should have been tested under all weather conditions during development, and the absence of comprehensive testing indicates a development process failure",
-            "A calibration gap: the system requires weather-based calibration parameters that should be automatically adjusted, and the documentation gap is secondary to the technical calibration issue"
+            "A Clause 7.5.3 documented-information control gap: the issue is that the limitation record is not version-controlled or distributed, rather than a substantive transparency gap toward users of the AI system",
+            "An A.6.2.4 verification-and-validation gap: the system was released without weather-condition acceptance criteria, so the absence of user-facing documentation is a downstream symptom of incomplete V&V records"
           ],
           correct: 0,
-          explanation: "Annex A requires documenting AI system capabilities and limitations. Known performance degradation under specific conditions is a limitation that must be documented and communicated. While testing (option B) and calibration (option C) may be relevant technical considerations, the primary AIMS gap is the failure to document and communicate the known limitation."
+          explanation: "Annex A controls on AI system information for users (A.8 family) require capabilities and limitations to be documented and communicated to those who rely on the system — that is the primary gap. Option B narrows the issue to internal document control (7.5.3), missing the user-facing communication failure. Option C misattributes a known-and-undisclosed limitation to a V&V (A.6.2.4) records gap rather than to information-for-users obligations."
         },
         {
           question: "The irrigation controller firmware update bypassed the change management process. Under Clause 8.1 and the audit preparation context, how should James handle this?",
           options: [
-            "Retroactively document the firmware update in the change management system and ensure the change log reflects the update to satisfy auditor documentation requirements",
+            "Issue a correction that backports the firmware update into the change register and re-runs the original Clause 6.3 planning steps as if the change had been authorized, since restoring the planned change record satisfies the change management requirement",
             "Investigate the firmware update's impact on AI control parameters, assess whether the change altered the risk profile, implement any necessary corrective actions, and strengthen the change management process to prevent recurrence, documenting all of this as evidence for the audit",
-            "Report the bypassed change management as a near-miss incident and accept a minor nonconformity during the surveillance audit rather than attempting to address it beforehand"
+            "Roll back the firmware to the pre-update version so that no unapproved AI parameter changes are in production at the time of the surveillance audit, then schedule a future Clause 8.1 change with full controls"
           ],
           correct: 1,
-          explanation: "A bypassed change management process requires investigation, impact assessment, and process improvement. Retroactive documentation alone (option A) does not address the root cause. Accepting the nonconformity without action (option C) fails to demonstrate the AIMS corrective action process is functioning. A thorough response demonstrates management system maturity."
+          explanation: "Clause 8.1 and 10.2 require investigating the impact, treating any altered risk, and correcting the process so the bypass cannot recur — both correction and corrective action. Option A confuses correction (record fix) with corrective action (root-cause elimination). Option C reflexively rolls back without impact assessment, which itself bypasses the change-management discipline the AIMS is meant to enforce."
         },
         {
           question: "The yield prediction model underestimates yields for organic farms. Under Clause 10.1 and Annex A fairness-related controls, what does this complaint reveal?",
           options: [
-            "This is a customer satisfaction issue that should be handled through the commercial complaints process rather than the AIMS, since yield prediction accuracy is a product quality matter",
+            "This is a Clause 9.1.2 customer-satisfaction signal that should be tracked as an external input metric, with action taken only if the satisfaction trend crosses a defined threshold rather than treated as a fairness nonconformity in its own right",
             "This may indicate systematic bias in the prediction model arising from training data that underrepresents organic farming practices, constituting a fairness concern that requires investigation of the model's performance across different farming methods and correction of any identified bias",
-            "This is an expected limitation since organic farming has more variable yields, and the model's underestimation is a statistical artifact rather than a bias, requiring explanation to the customer rather than model correction"
+            "This is a Clause 6.1.4 AI impact assessment update trigger limited to the organic-farm subgroup, allowing the model to remain in production while the impact register is amended to reflect the disclosed limitation for that segment"
           ],
           correct: 1,
-          explanation: "Systematic underperformance for a specific farming category may indicate bias in the model. This is an AIMS concern related to fairness controls, not merely a commercial complaint (option A). While organic farming variability is real, systematic underestimation suggests a pattern that requires investigation (option C dismisses the concern without analysis)."
+          explanation: "Clause 10.1 continual improvement plus Annex A fairness-related controls require investigating systematic performance differences across groups and correcting bias, not just monitoring satisfaction or amending registers. Option A misuses 9.1.2 to defer action behind a satisfaction threshold. Option C treats a fairness signal as a documentation update under 6.1.4 without investigating or correcting the underlying model behavior."
         },
         {
           question: "The yield prediction model informs commodity trading decisions. Under Annex A controls on AI system impact assessment, what additional governance consideration does this create?",
           options: [
             "The financial impact of prediction errors extends beyond farming operations to trading positions, requiring the impact assessment to consider downstream economic consequences and the potential for market manipulation, even if unintentional",
-            "Commodity trading is a separate business activity from precision agriculture and should be governed under financial regulations rather than the AIMS",
-            "The connection between yield prediction and trading decisions should be severed, since using AI predictions for financial decisions creates unacceptable risk that cannot be adequately managed under ISO/IEC 42001"
+            "The trading use case lies outside the certified AIMS scope statement and should be excluded from Clause 6.1.4 impact assessment, with risks managed instead through the contractual disclaimers in the trading desk's terms of service",
+            "The Clause 6.1.4 impact assessment should be limited to direct users of the prediction (the trading desk), since A.5 impact controls apply only to immediate users and onward effects on commodity markets are out of scope"
           ],
           correct: 0,
-          explanation: "Impact assessment must consider downstream uses and consequences. When AI predictions inform financial decisions, the impact extends to economic harm and potential market concerns. This is within AIMS scope (option B is wrong) and can be managed with appropriate controls (option C is unnecessarily restrictive). The key is understanding and managing the full chain of impact."
+          explanation: "Clause 6.1.4 and A.5 impact-assessment controls require considering individuals, groups, and societies affected by AI system outcomes — including downstream economic effects when predictions feed financial decisions. Option B improperly contracts AIMS scope to exclude a known downstream use. Option C misreads A.5: impact extends beyond the immediate user to those affected by the user's decisions, which is precisely the trading-market context here."
         },
         {
           question: "James is preparing for the first surveillance audit after 14 months of certification. What specific evidence should he prepare regarding continual improvement under Clause 10.2?",
           options: [
-            "A list of all AIMS documents that have been updated since certification, demonstrating that the management system documentation is current",
+            "A summary report of every nonconformity raised under Clause 10.2 since certification with closure dates, since Clause 10.2 nonconformity records are the recognized evidence base auditors review when evaluating Clause 10.1 continual improvement",
             "Evidence showing how operational experience, monitoring results, audit findings, and management review outputs have driven specific improvements to the AIMS, including changes to processes, controls, risk assessments, or objectives based on lessons learned",
-            "A comprehensive improvement roadmap showing planned improvements for the next three years, demonstrating the organization's commitment to long-term AIMS enhancement"
+            "A trend chart of Clause 6.2 AIMS objectives showing year-on-year target tightening, since continual improvement under Clause 10.1 is demonstrated by progressively more demanding objectives rather than by changes to processes and controls"
           ],
           correct: 1,
-          explanation: "Continual improvement evidence should show the improvement cycle in action: inputs (monitoring, audits, reviews) leading to concrete improvements. Document updates alone (option A) show maintenance, not improvement. Future plans (option C) show intent but not evidence of improvement. Auditors look for evidence that the PDCA cycle has produced actual improvements."
+          explanation: "Clause 10.1 continual improvement is demonstrated by linking AIMS inputs (monitoring, audit, review) to concrete changes in processes, controls, or objectives. Option A confuses Clause 10.2 nonconformity closure with 10.1 improvement — closing NCs is necessary but does not by itself evidence broader improvement. Option C reduces 10.1 to a single mechanism (tightening 6.2 objectives), which is one possible improvement but not the required evidence base."
         }
       ]
     },
@@ -302,52 +302,52 @@ export const EXAM_2: Exam = {
         {
           question: "The defect detection rate dropped from 99.2% to 97.1% over three months. Under Clause 9.1, what analysis is most important before determining corrective actions?",
           options: [
-            "Trend analysis comparing the decline to industry benchmarks, since a 97.1% detection rate may still exceed aerospace industry standards and therefore may not require corrective action",
+            "Recalibration analysis that retrains the model on the most recent three months of inspection images, since Clause 9.1 monitoring requires periodic recalibration as the first response when a metric trends downward over the measurement period",
             "Root cause analysis examining whether the decline correlates with the expansion to new production lines, changes in product mix, environmental factors, model degradation, or data drift, to determine the specific factor or combination of factors driving the performance change",
-            "Statistical significance testing to confirm that the 2.1% decline is not within normal random variation before investing resources in investigation"
+            "Process capability analysis comparing the new 97.1% rate against the Clause 6.2 detection-rate objective, with corrective action triggered only if the metric falls below the documented objective rather than on the trend itself"
           ],
           correct: 1,
-          explanation: "Root cause analysis is essential for effective corrective action. Industry benchmarking (option A) does not address why performance is declining. Statistical significance (option C) is one element but should not delay investigation of a consistent downward trend in a safety-critical application."
+          explanation: "Clause 9.1 requires analysis to understand performance, and Clause 10.2 corrective action depends on identifying the cause before acting. Option A jumps to retraining as a default response, skipping cause analysis and risking masking the real driver (e.g., line expansion). Option C waits for an objective threshold breach, ignoring that a sustained downward trend in a safety-critical AI system already warrants investigation regardless of the current absolute level."
         },
         {
           question: "The AI system trained on one production line is now used across three lines with different lighting conditions. Under Clause 8.1, what operational control gap does this represent?",
           options: [
             "A deployment validation gap: the AI system was deployed in environments that differ from its training conditions without systematic validation of performance under the new conditions, violating change management and validation requirements",
-            "A scope creep issue that should be addressed by restricting the AI system to its original production line until additional training data can be collected",
-            "An infrastructure standardization issue that should be resolved by installing identical lighting across all production lines to match the training environment"
+            "A Clause 7.2 competence gap: the operators on the additional lines were not trained on the AI system's environmental sensitivity, so the issue is rooted in personnel competence rather than in the deployment decision itself",
+            "An A.4.3 computing-resource control gap: the system's GPU inference capacity was sized for one line, and extending it to three without resizing infrastructure is the operational issue rather than the lighting variation"
           ],
           correct: 0,
-          explanation: "Deploying an AI system in conditions different from its training environment without validation is a change management and operational control gap. Restricting to the original line (option B) addresses the symptom but may not be practical. Standardizing lighting (option C) is one possible solution but does not address the governance gap of deploying without validation."
+          explanation: "Clause 8.1 requires operations to be carried out under controlled conditions, and A.6.2 lifecycle controls require validation when the operating context changes. The core gap is deploying into untested environmental conditions without re-validation. Option B reframes the issue as a 7.2 training matter, missing the deployment-validation failure. Option C swaps the lighting/environment validation question for an A.4.3 capacity-planning concern that the scenario does not present."
         },
         {
           question: "The false rejection rate increase has caused a 15% rise in rework costs. Under Clause 9.3 management review inputs, how should this be presented?",
           options: [
-            "As a financial impact metric demonstrating the business case for improving the AI system, framed to secure additional budget for model retraining",
+            "As a Clause 6.2 objective revision proposal that lowers the false-rejection target to match the new operating reality, since 9.3 inputs are framed as proposed objective changes rather than performance narratives",
             "As a performance evaluation result that connects AI system behavior to business outcomes, including the metric trend, root cause analysis, financial impact, and proposed actions with cost-benefit analysis for management decision-making",
-            "As an operational efficiency issue that should be managed by the production team rather than escalated to management review, since the financial impact is within the production budget's tolerance"
+            "As an A.6.2.6 operation-and-monitoring item logged in the operational risk register and referenced in management review minutes by exception only, since 9.3 inputs cover AIMS-level matters rather than control-level performance data"
           ],
           correct: 1,
-          explanation: "Management review inputs should connect performance data to business impact with analysis and proposed actions. Simply framing it as a budget request (option A) does not provide adequate analysis. Keeping it at the operational level (option C) denies management the information needed to make informed decisions about AI system performance."
+          explanation: "Clause 9.3 explicitly lists performance information, trends, and improvement opportunities as required management review inputs — connecting AI behavior to business outcomes is exactly that. Option A confuses an input with an output (objective revision is a 9.3 outcome, not the input format). Option C wrongly excludes control-level performance from 9.3 by treating A.6.2.6 monitoring data as 'too operational' for management review."
         },
         {
           question: "Internal auditors found that calibration procedures reference an outdated quality standard. Under Clause 9.2, what does this finding indicate about the internal audit function?",
           options: [
             "The internal auditors demonstrated competence by identifying this gap, and the finding indicates a document control issue under Clause 7.5 rather than a failure of the audit program itself",
-            "The internal auditors should have identified this gap earlier, and the finding indicates the internal audit frequency for operational procedures is insufficient",
-            "The finding is outside the internal audit scope since calibration procedures are technical documents managed under the quality management system, not the AIMS"
+            "The finding shows the Clause 9.2 audit programme lacks independence, since auditors reporting into the quality function would have flagged the outdated reference sooner and the late detection points to an objectivity problem in auditor selection",
+            "The finding is a Clause 9.2 audit-criteria deficiency, indicating that the documented audit criteria did not require auditors to verify that referenced external standards are current, and the audit programme should be reissued before recurring"
           ],
           correct: 0,
-          explanation: "This is a positive finding by competent auditors identifying a document control gap (Clause 7.5). The primary issue is that documented information references outdated standards, not that the audit program failed. Calibration of AI inspection systems is within AIMS scope (option C is wrong), and the timing of the audit program (option B) is not directly implicated by this finding."
+          explanation: "Clause 9.2 audits exist precisely to surface gaps like outdated documented information, and the underlying issue belongs to Clause 7.5 (control of documented information). Option B fabricates an independence problem from a successful audit detection. Option C reframes a positive finding as a programme deficiency requiring reissue, conflating a 7.5 finding with a 9.2 audit-criteria failure the scenario does not support."
         },
         {
           question: "Dr. Svensson needs to determine monitoring frequency for the AI inspection system. Under Clause 9.1, what factors should determine the monitoring interval?",
           options: [
-            "Monthly monitoring is sufficient for all AI systems in manufacturing environments, as this provides adequate visibility into performance trends without creating excessive monitoring overhead",
+            "Monitoring frequency should align to the Clause 9.2 audit cycle so each audit re-baselines the metric, keeping intervals within the audit cycle and data synchronised with audit findings",
             "The monitoring frequency should be determined by the AI system's criticality, the rate of environmental change, historical performance variability, and the consequences of undetected performance degradation, with more frequent monitoring for higher-risk applications",
-            "Continuous real-time monitoring is required for all safety-critical AI systems, since any gap in monitoring creates unacceptable risk of undetected failures"
+            "Monitoring frequency should follow the Clause 9.3 management review cadence, since 9.1 results feed 9.3 inputs and intervals shorter than the review cycle generate data that cannot be acted upon by top management"
           ],
           correct: 1,
-          explanation: "Monitoring frequency should be risk-based and context-dependent. A fixed monthly schedule (option A) may be inadequate for rapidly changing environments. Continuous real-time monitoring for everything (option C) may be desirable but is not a universal requirement and may not be practical. The factors listed in option B provide a rational basis for determining appropriate frequency."
+          explanation: "Clause 9.1 requires the organization to determine when monitoring is performed based on what needs to be measured, and ISO/IEC 42001 expects this to be risk- and context-driven. Option A ties 9.1 to 9.2 audit cadence, but audits sample compliance and do not set measurement frequency. Option C subordinates 9.1 to 9.3 review cadence, missing that operational measurement must detect issues between management reviews, not be paced by them."
         }
       ]
     },
@@ -361,51 +361,51 @@ export const EXAM_2: Exam = {
           question: "The audit team observes processes with limited evidence of operation beyond initial implementation. Under ISO/IEC 17021-1, what does this suggest about the timing of the Stage 2 audit?",
           options: [
             "The Stage 2 audit may have been scheduled too early, as there is insufficient evidence that the AIMS has been fully operational long enough to demonstrate effective implementation and the completion of at least one full PDCA cycle",
-            "The limited evidence is acceptable for an initial Stage 2 audit, as organizations are expected to mature their processes after certification is granted",
-            "The audit team should extend the Stage 2 audit duration to gather additional evidence, since the organization's readiness is ultimately determined by the depth of evidence collected during the audit"
+            "The limited evidence is consistent with a Stage 1 readiness review, and the auditors should defer their effectiveness assessment to the first surveillance audit when more operational data will be available for evaluation",
+            "The auditors should reclassify the gaps as observations rather than nonconformities, since ISO/IEC 17021-1 expects effectiveness to be evaluated only across the full three-year certification cycle and not at a single stage"
           ],
           correct: 0,
-          explanation: "Stage 2 assesses implementation and effectiveness. If processes show limited operational evidence, the management system may not have been operational long enough. The standard expects adequate operational history before Stage 2, not maturation after certification (option B). Extending the audit (option C) cannot compensate for insufficient operational history."
+          explanation: "Stage 2 assesses implementation and effectiveness, which requires the AIMS to have been operational long enough to generate evidence including a completed PDCA cycle. Option B confuses Stage 1 (design adequacy, ~30%) with Stage 2 (effectiveness) and misuses surveillance audits, which presume a granted certificate. Option C misstates ISO/IEC 17021-1: effectiveness must be demonstrated at Stage 2, not deferred across the certification cycle."
         },
         {
           question: "The risk treatment plan references controls 'planned for Q2' rather than implemented. Under Clause 6.1 and the Stage 2 audit requirements, how should the auditors evaluate this?",
           options: [
-            "Planned controls are acceptable if the organization can demonstrate a credible implementation timeline, since risk treatment is a progressive process and not all controls need to be in place at certification",
+            "The planned controls are acceptable provided the organization documents a Clause 6.3 change plan with a credible implementation timeline, since Clause 6.1.3 permits deferred risk treatment for risks within the residual acceptance threshold of the SoA",
             "This represents a nonconformity: the risk assessment has identified a risk and the treatment plan does not include implemented controls to address it, meaning the risk is currently untreated, which is a gap in the AIMS if the risk exceeds acceptance criteria",
-            "The auditors should assess whether interim measures are in place to manage the risk until the planned controls are implemented, and evaluate this as part of the overall risk treatment adequacy"
+            "This is a Clause 8.3 operational risk treatment issue rather than a Clause 6.1 finding, so the auditors should request that the organization escalate the planned controls into the next management review cycle and treat it as an opportunity for improvement"
           ],
           correct: 1,
-          explanation: "At Stage 2, risk treatment must be implemented, not merely planned. If a risk is identified as requiring treatment but the controls are not yet implemented, the risk is untreated. While interim measures (option C) might mitigate this, the scenario does not indicate any interim measures are in place. The finding is that identified risks lack implemented treatment."
+          explanation: "Clauses 6.1.3 and 8.3 require risk treatment to be implemented; identified risks above acceptance criteria cannot remain untreated at Stage 2. Option A misuses Clause 6.3 (changes), which governs planned changes to the AIMS rather than deferring risk treatment, and misstates SoA acceptance. Option C misroutes the issue to Clause 8.3 and downgrades a Clause 6.1.3 nonconformity to an opportunity for improvement, which is incorrect."
         },
         {
           question: "The SoA excludes AI system lifecycle management controls because the system is 'in production and not actively being developed.' Is this exclusion justified?",
           options: [
-            "The exclusion is justified because lifecycle management controls are specifically for systems in development, and a production system's governance needs are adequately covered by operational controls",
+            "The exclusion is justified under Clause 6.1.3 because A.6 lifecycle controls apply to active development activities, and a production system is adequately governed by A.9 use controls and the routine monitoring requirements of Clause 9.1",
             "The exclusion is not justified: AI systems in production still require lifecycle management including monitoring for degradation, planning for retraining, managing retirement or replacement, and addressing changes in the operating environment",
-            "The exclusion is partially justified, but should be reframed as 'lifecycle management controls are applicable only to the operational and retirement phases' rather than excluded entirely"
+            "The exclusion is partially justified provided the SoA records A.6.2 design controls as not applicable while retaining A.6.1 lifecycle planning and A.6.3 verification and validation for the deployed model"
           ],
           correct: 1,
-          explanation: "AI system lifecycle management extends beyond development. Production systems require ongoing lifecycle management including performance monitoring, model currency, retirement planning, and environmental change management. Excluding lifecycle management because the system is 'in production' reflects a misunderstanding that lifecycle only covers development."
+          explanation: "AI system lifecycle management under A.6 spans the full lifecycle, including operation, monitoring, retraining, and retirement, not only active development. Option A misreads A.6 and treats A.9 use controls and Clause 9.1 monitoring as if they replace lifecycle governance. Option C misallocates A.6 sub-controls: A.6.2 design and A.6.3 verification remain relevant whenever model changes or revalidation occur in production."
         },
         {
           question: "The AI system shows strong accuracy for the dominant user demographic but no subgroup analysis has been conducted. Under Annex A controls and the audit evaluation, what finding should the auditors raise?",
           options: [
-            "An observation suggesting that demographic subgroup analysis would be beneficial, but noting that it is not explicitly required by ISO/IEC 42001 since the overall accuracy metrics demonstrate system effectiveness",
+            "An opportunity for improvement under Clause 10.1, recommending that subgroup analysis be added during the next continual improvement cycle, since aggregate accuracy already satisfies the Clause 6.2 AI objective for system effectiveness",
             "A nonconformity related to Annex A controls on fairness and bias assessment, since the organization has not demonstrated that the AI system performs equitably across user demographics, which is a fundamental requirement for systems that affect access to services based on individual characteristics",
-            "A minor nonconformity related to monitoring and measurement under Clause 9.1, since the performance evaluation does not include sufficient granularity to identify potential demographic disparities"
+            "A minor nonconformity under A.7.4 data quality, since the absence of stratified accuracy metrics indicates the training and evaluation datasets were not balanced across the demographic populations the system is intended to serve"
           ],
           correct: 1,
-          explanation: "For a behavioral authentication system that affects user access, failing to analyze performance across demographics is a fairness concern. Annex A controls require assessing AI systems for bias. Overall accuracy masking demographic disparities is a well-known AI fairness issue. This is more than an observation (option A) given the system's impact on access. While Clause 9.1 is relevant (option C), the more fundamental issue is fairness assessment."
+          explanation: "For a behavioral authentication system affecting user access, failure to evaluate fairness across demographics breaches Annex A controls on bias assessment and AI impact assessment (Clause 6.1.4). Option A misuses Clause 10.1 continual improvement to defer a current conformity gap and misreads Clause 6.2. Option C misallocates the finding to A.7.4 data quality; the core failure is missing fairness evaluation, not unbalanced datasets specifically."
         },
         {
           question: "Considering all four findings collectively, what is the most likely Stage 2 audit recommendation?",
           options: [
-            "Recommend certification with minor nonconformities that must be closed within the defined timeframe, since the AIMS framework is in place even though some elements need maturing",
+            "Recommend certification once the organization submits a corrective action plan within 30 days addressing each finding as a minor nonconformity, since the AIMS framework is documented and the gaps relate to maturing operational evidence rather than design",
             "Do not recommend certification at this time, as the combination of limited operational evidence, untreated risks, unjustified SoA exclusions, and unaddressed fairness analysis indicates the AIMS is not yet effectively implemented",
-            "Recommend a partial certification covering only the aspects of the AIMS that are fully operational, with a plan to extend certification scope as remaining elements are implemented"
+            "Recommend conditional certification under ISO/IEC 17021-1 with a six-month surveillance audit triggered early to verify closure of the four findings, retaining the original certificate validity in the interim"
           ],
           correct: 1,
-          explanation: "The collective findings indicate systemic implementation gaps rather than isolated issues. Limited operational evidence, untreated risks, unjustified exclusions, and missing fairness analysis together suggest the AIMS is not ready for certification. Partial certification (option C) is not a standard certification outcome. The combination of findings is too significant for certification with minor nonconformities (option A)."
+          explanation: "Multiple major nonconformities across implementation evidence, risk treatment, SoA exclusions, and fairness assessment cannot be remediated by a corrective action plan alone; certification must be withheld. Option A misclassifies major issues as minor and misuses the 30-day action plan window (which applies to minor NC closure, not major NC). Option C invents a 'conditional certification' outcome that ISO/IEC 17021-1 does not provide for an initial certification."
         }
       ]
     },
@@ -418,52 +418,52 @@ export const EXAM_2: Exam = {
         {
           question: "The automated response generator provides contradictory policy information due to training on historical transcripts. Under Annex A controls and Clause 8.1, what is the most appropriate corrective approach?",
           options: [
-            "Retrain the model exclusively on current policy documents, removing all historical transcripts from the training data to eliminate the source of contradictory information",
+            "Apply a Clause 10.2 correction by purging all transcripts older than 12 months from the training corpus and triggering a single retraining run, since outdated source data is the root cause and removing it eliminates the nonconformity",
             "Implement a multi-layered approach: establish a policy verification mechanism that cross-references generated responses against current policy documents, implement a feedback loop for agents to flag incorrect responses, and define a process for periodic retraining with updated policy data",
-            "Replace the generative response system with a retrieval-based system that only uses pre-approved response templates, eliminating the risk of generating contradictory information"
+            "Add a post-generation human approval gate under A.9.3 human oversight, requiring an agent to authorize every policy-related response before it reaches the customer, which fully treats the risk without modifying the underlying generative model"
           ],
           correct: 1,
-          explanation: "A multi-layered approach addresses the immediate issue and establishes ongoing controls. Retraining only on policy documents (option A) loses valuable conversational patterns. Replacing with templates (option C) is a valid option but may be disproportionate if the generative system provides value. The multi-layered approach balances risk treatment with system capability."
+          explanation: "Clause 8.1 and A.6 require operational controls layered around policy correctness, including verification, feedback, and planned retraining. Option A confuses Clause 10.2 correction (immediate fix) with corrective action (root-cause treatment) and treats data age as the sole cause. Option C overuses A.9.3 human oversight as a blanket control, creating an unscalable bottleneck rather than addressing the model's grounding in current policy."
         },
         {
           question: "The sentiment analysis misclassifies assertive communication as 'angry' for certain cultural styles. Under Annex A fairness controls, what does this represent?",
           options: [
             "A cultural bias in the sentiment model that could lead to discriminatory service outcomes, where customers from certain cultural backgrounds systematically receive different treatment through unnecessary escalation, requiring assessment of the model's behavior across cultural communication styles",
-            "A model accuracy issue that should be addressed through additional training data covering diverse communication styles, without requiring a formal fairness assessment since sentiment analysis is not a decision-making system",
-            "An acceptable limitation of sentiment analysis technology, since cultural nuance is inherently difficult for AI systems and the escalation does not harm customers since they receive human attention"
+            "An A.7.4 data quality issue resolvable by augmenting the training set with additional culturally diverse samples, with no fairness review needed because sentiment analysis only routes traffic and does not make adverse decisions about the customer",
+            "A known limitation of sentiment analysis technology that A.5 impact assessment can record as a residual risk, since escalation routes the customer to a human agent and any cultural skew is offset by that downstream human review"
           ],
           correct: 0,
-          explanation: "Cultural misclassification leading to differential service treatment is a fairness concern under Annex A. Even though escalation results in human attention (option C), the systematic differential treatment based on cultural communication style is discriminatory in effect. This is more than a simple accuracy issue (option B) - it has fairness implications requiring formal assessment."
+          explanation: "Systematic misclassification correlated with cultural background is a fairness issue under Annex A controls and Clause 6.1.4 AI impact assessment, even when escalation involves humans. Option B downgrades fairness to A.7.4 data quality and incorrectly excludes routing decisions from fairness scope. Option C misuses A.5 impact assessment to accept a fairness defect as residual risk and assumes downstream human review automatically neutralizes upstream bias."
         },
         {
           question: "Fatima discovers that controls related to AI system lifecycle and responsible AI have not been addressed. Under the AIMS implementation approach, what is the most appropriate response?",
           options: [
             "Prioritize implementing the missing controls based on their relevance to the organization's risk profile, ensuring that the most critical gaps are addressed first while maintaining a plan for complete control implementation",
-            "Postpone the certification timeline until all Annex A controls are fully implemented, since partial implementation will result in automatic audit failure",
-            "Exclude the unimplemented controls from the Statement of Applicability to align the SoA with the current implementation state"
+            "Defer the certification timeline by 12 months until every Annex A.6 lifecycle and A.9 responsible-AI control reaches uniform maturity, because Stage 2 requires all controls in Annex A to be implemented at the same level",
+            "Mark the missing A.6 and A.9 controls as 'planned, not implemented' in the SoA and rely on the Clause 6.1.3 risk treatment plan alone, since the SoA only needs to record applicability decisions, not implementation status"
           ],
           correct: 0,
-          explanation: "Implementation should be prioritized based on risk and relevance. Not all controls need to be at the same maturity level simultaneously. Postponing everything (option B) may be unnecessary if the most critical controls can be implemented quickly. Excluding controls from the SoA (option C) should only be done if the controls are genuinely not applicable, not because they have not been implemented yet."
+          explanation: "Implementation under Clauses 6.1.3 and 8.3 should be prioritized by risk. Option B misstates the standard: ISO/IEC 42001 does not require uniform Annex A maturity, and a 12-month blanket deferral is not a standard remedy. Option C misreads the SoA, which must record applicability and current implementation status of each Annex A control; it cannot substitute for actual treatment of identified risks."
         },
         {
           question: "The AIMS implementation is in month six. Under the Harmonized Structure and Clause 4.4, what must the organization demonstrate at this stage?",
           options: [
-            "A fully operational AIMS with evidence of at least one complete management review cycle and internal audit",
+            "Three full PDCA cycles with two completed Clause 9.3 management reviews and at least one Clause 9.2 internal audit programme, since Clause 4.4 requires demonstrated continual improvement before any external audit can take place",
             "Evidence of systematic progress in establishing and implementing the AIMS, with documented processes, initial risk assessments, and defined controls, even if full operational maturity has not been achieved",
-            "Only documented plans and policies, since the first six months of implementation should focus on planning before operational activities begin"
+            "Approved AIMS policies and a Clause 6.1.3 risk treatment plan only, with operational activities deferred until month nine, because Clause 4.4 treats the first half of an implementation programme as a planning-only phase"
           ],
           correct: 1,
-          explanation: "At six months, the organization should show systematic progress in implementation. Full operational maturity (option A) may not be expected this early, but there should be more than just plans (option C). Evidence of active implementation - documented processes, initial assessments, and defined controls - demonstrates appropriate progress."
+          explanation: "Clause 4.4 requires the AIMS to be established, implemented, maintained, and continually improved; at six months, evidence of active implementation is appropriate. Option A overstates expectations by demanding multiple PDCA cycles and prerequisite reviews that Clause 9.3 does not require this early. Option C understates them: Clause 4.4 does not designate a planning-only phase, and operational implementation cannot be deferred wholesale."
         },
         {
           question: "Fatima wants to ensure the AIMS documentation meets Clause 7.5 requirements. The organization has documentation scattered across a wiki, SharePoint, and individual team drives. What is the most critical action?",
           options: [
-            "Migrate all documentation to a single centralized platform to ensure consistency and ease of access during certification audits",
+            "Consolidate every AIMS artifact into one document management platform within 90 days, since Clause 7.5.3 requires documented information to be controlled in a single repository with a unified access permission model",
             "Ensure that wherever documentation is stored, it meets Clause 7.5 requirements for identification, format, review and approval, availability, storage, version control, retention, and disposition, with a document register that enables retrieval across all platforms",
-            "Create a dedicated AIMS document management system separate from existing platforms, since management system documentation requires specialized controls that general-purpose platforms cannot provide"
+            "Reclassify the wiki and team-drive content as 'records' under Clause 7.5.3 and apply Clause 7.5.2 controls only to formally approved policies in SharePoint, since records of activities have lighter documented information requirements"
           ],
           correct: 1,
-          explanation: "Clause 7.5 defines functional requirements for documented information control, not the specific tool or platform. Documentation can be distributed across systems provided the functional requirements are met. Centralization (option A) may help but is not required. A specialized system (option C) is unnecessary if existing platforms can meet the requirements."
+          explanation: "Clause 7.5 sets functional requirements for documented information regardless of platform; multiple stores are acceptable when control objectives are met. Option A invents a Clause 7.5.3 single-repository rule that does not exist. Option C confuses Clause 7.5.2 (creation/updating) and 7.5.3 (control of documented information): both apply equally to records and policies, and reclassifying content does not lower the control requirements."
         }
       ]
     },
@@ -476,52 +476,52 @@ export const EXAM_2: Exam = {
         {
           question: "Raj is defining the AIMS scope under Clause 4.3. FreshChain's three AI systems have different risk profiles and maturity levels. What is the most appropriate scoping strategy?",
           options: [
-            "Include all three AI systems in a single AIMS scope from the outset, since they are interconnected components of the same supply chain and managing them separately would create governance gaps at their interfaces",
-            "Start with the highest-risk AI system (crop disease prediction, given the food safety implications) and progressively expand scope to include the other systems, ensuring each addition includes proper context analysis and risk assessment",
+            "Include all three AI systems in scope and require uniform Annex A control implementation across them on day one of certification, since Clause 4.3 prohibits a scope that allows different maturity levels for systems with shared interfaces",
+            "Begin with crop disease prediction alone as a pilot AIMS scope and add the logistics optimizer and demand forecaster only after each has completed an independent Stage 1 readiness assessment, since Clause 4.3 favors incremental scope expansion via separate certifications",
             "Define the scope to include all three systems but implement controls in phases based on risk priority, with the scope statement clearly identifying which controls apply to which systems and at what implementation stage"
           ],
           correct: 2,
-          explanation: "Including all systems in scope but phasing control implementation based on risk priority provides comprehensive governance while being practical. Starting with only one system (option B) may miss critical interfaces. Including everything at the same implementation level (option A) may be unrealistic given different maturities. A phased control approach within a comprehensive scope balances completeness with practicality."
+          explanation: "Clause 4.3 lets the organization define scope based on context, interested parties, and AIMS boundaries; phased control implementation by risk priority within a unified scope is consistent with the standard. Option A invents a uniform-maturity rule that Clause 4.3 does not impose. Option B treats sub-systems as separate certifications and misuses Stage 1 readiness, which applies to the AIMS as a whole, not per-system staging."
         },
         {
           question: "The satellite imagery source is a government space agency with periodic outages. Under Clause 4.1 external context analysis, how should this dependency be characterized?",
           options: [
-            "As a technology dependency that should be addressed through IT disaster recovery planning rather than the AIMS, since satellite infrastructure is beyond the organization's control",
+            "As an A.10 third-party supplier issue handled exclusively through the IT business continuity programme, since the satellite agency sits outside the AIMS boundary and Clause 4.1 only requires documenting issues that the organization can directly control",
             "As an external factor that affects the organization's ability to achieve AIMS objectives, requiring assessment of the impact of data availability on AI system performance and the establishment of contingency plans for periods of reduced data availability",
-            "As a supply chain risk that falls under the logistics optimizer's risk assessment rather than the AIMS context analysis"
+            "As an A.7.4 data quality finding for the crop disease model only, addressed within that system's risk register under Clause 8.2 and excluded from Clause 4.1 because individual data feeds are not strategic context"
           ],
           correct: 1,
-          explanation: "Dependencies on external data sources that affect AI system performance are relevant external issues under Clause 4.1. This is an AIMS concern (not just IT, option A) because the data availability directly affects AI system performance. It is a context-level issue (not system-specific, option C) because it affects the organization's broader ability to achieve AIMS outcomes."
+          explanation: "Clause 4.1 covers external issues relevant to the AIMS purpose and outcomes, including dependencies that affect AI performance, regardless of organizational control. Option A misuses A.10 third-party controls and incorrectly limits Clause 4.1 to issues the organization controls. Option C misallocates a context-level dependency to A.7.4 data quality and Clause 8.2 operational risk, missing the strategic relevance to the AIMS as a whole."
         },
         {
           question: "The demand forecasting model has significant seasonal accuracy variations. Under Clause 6.2 AI objectives and Clause 9.1 monitoring, how should performance targets be established?",
           options: [
-            "Set a single annual accuracy target that averages out seasonal variations, providing a fair assessment of the model's overall performance",
+            "Set a single rolling 12-month accuracy target under Clause 6.2 that smooths seasonal variation, with Clause 9.1 monitoring triggered only when the annual figure breaches the threshold, since AI objectives must be expressed as one annualized SMART metric",
             "Establish seasonally adjusted performance targets that reflect expected accuracy variations throughout the year, with monitoring that evaluates performance against the appropriate seasonal benchmark and investigates deviations from expected seasonal patterns",
-            "Set targets based only on the model's peak performance season, since this represents the system's true capability, and treat underperformance in other seasons as a known limitation"
+            "Set the Clause 6.2 target equal to the model's best historical season and treat the pattern as concept drift under A.6 lifecycle controls during weaker seasons, with retraining triggered each time accuracy falls below that benchmark"
           ],
           correct: 1,
-          explanation: "Seasonally adjusted targets provide meaningful performance evaluation. A single annual target (option A) may mask sustained underperformance in specific seasons. Using only peak performance (option C) sets unrealistic expectations. Seasonal benchmarks enable appropriate evaluation and meaningful investigation of deviations."
+          explanation: "Clause 6.2 requires AI objectives to be measurable and consistent with policy; Clause 9.1 requires meaningful monitoring. Seasonally calibrated targets satisfy both. Option A invents a 'one annualized SMART metric' rule and delays Clause 9.1 evaluation. Option C confuses concept drift (a change in the underlying relationship) with predictable seasonal variation and misuses A.6 lifecycle controls to trigger needless retraining."
         },
         {
           question: "A competitor's food safety incident was linked to AI-driven shelf life decisions. Under Clause 4.1 external context analysis, how should FreshChain consider this?",
           options: [
-            "This is relevant only if FreshChain uses similar AI for shelf life decisions; since FreshChain's AI focuses on logistics and forecasting, the competitor incident does not affect FreshChain's context analysis",
+            "It is relevant only when the competitor's AI architecture matches FreshChain's logistics and forecasting models; since the use cases differ, Clause 4.1 does not require the incident to be recorded in the external context register",
             "This external event is relevant because it may influence regulatory scrutiny of AI in food supply chains, public trust in AI-driven food safety decisions, and interested party expectations about AI governance in the agricultural sector, regardless of whether FreshChain uses identical AI applications",
-            "This should trigger an immediate review of FreshChain's AI systems to ensure they cannot cause similar incidents, but it does not need to be included in the formal context analysis"
+            "It should be logged as an A.5 impact assessment input rather than a Clause 4.1 external issue, since competitor incidents inform the AI impact assessment for FreshChain's own systems but do not change the strategic context of the AIMS"
           ],
           correct: 1,
-          explanation: "External events affecting the industry context are relevant under Clause 4.1 even if the specific application differs. The competitor incident may change regulatory expectations, public perception, and stakeholder requirements for all AI in food supply chains. This broader impact should be reflected in context analysis, not just internal technical review."
+          explanation: "Clause 4.1 covers external issues, including regulatory, market, and stakeholder shifts triggered by sector-wide events. Option A misreads Clause 4.1 by limiting relevance to identical applications. Option C misroutes context to A.5 (AI impact assessment of FreshChain's own systems): the competitor event reshapes the strategic environment and interested-party expectations and therefore belongs in the Clause 4.1 analysis."
         },
         {
           question: "The logistics optimizer interacts with third-party cold chain monitoring systems. Under Clause 4.2 interested party analysis and the risk assessment framework, what is the most important consideration?",
           options: [
-            "The third-party cold chain providers should be required to implement their own AIMS before their systems can be integrated with FreshChain's logistics optimizer",
+            "FreshChain should require each cold chain provider to hold an ISO/IEC 42001 certificate within 12 months as a precondition for integration, since A.10.3 makes provider AIMS certification mandatory whenever third-party data feeds an in-scope AI system",
             "The interfaces between FreshChain's AI and third-party systems create shared data dependencies where data quality, availability, and integrity from external sources directly affect AI system decisions, requiring defined quality requirements and monitoring at integration points",
-            "Third-party system interactions should be managed through standard API contracts and service level agreements, which are commercial matters outside the AIMS scope"
+            "These interactions are governed through Clause 8.1 operational planning and standard procurement SLAs, with cold chain providers treated as suppliers rather than interested parties under Clause 4.2 because their relationship is contractual"
           ],
           correct: 1,
-          explanation: "Third-party system interfaces create data dependencies that affect AI decision quality. These must be governed within the AIMS through defined requirements and monitoring. Requiring third-party AIMS (option A) is impractical. Treating integration as purely commercial (option C) ignores the AI-specific governance requirements for data quality and decision integrity."
+          explanation: "Clause 4.2 and A.10 require integration interfaces and supplier-supplied data to be assessed for impact on AI decisions, with quality requirements and monitoring at integration points. Option A overreaches A.10.3, which calls for assessing and managing third parties, not mandating their certification. Option C wrongly excludes suppliers from interested-party analysis under Clause 4.2 and limits governance to procurement SLAs."
         }
       ]
     },
@@ -535,51 +535,51 @@ export const EXAM_2: Exam = {
           question: "The facial recognition system has 47 complaints with disproportionate impact on students with darker skin tones. Under Clause 10.1 and Annex A fairness controls, what is the audit team's expected assessment?",
           options: [
             "A major nonconformity related to fairness and bias management: the organization has evidence of discriminatory system performance and 47 complaints indicating a systematic issue that has not been adequately addressed through the corrective action process",
-            "A minor nonconformity related to complaints handling: the 47 complaints should have been analyzed for patterns, but the facial recognition performance issue itself is a technical matter outside the AIMS scope",
-            "An observation that the organization should consider investigating the complaint pattern, since correlation between complaints and skin tone does not necessarily demonstrate bias in the AI system"
+            "A minor nonconformity under A.8 information for interested parties, because the complaints indicate that disclosures about identity-verification limitations were not communicated clearly enough; the underlying model performance falls outside the AIMS audit scope",
+            "An opportunity for improvement under Clause 9.1, recommending that ExamSecure expand its monitoring metrics to include skin-tone segmented accuracy in the next surveillance cycle, since complaint volume alone does not constitute evidence of bias"
           ],
           correct: 0,
-          explanation: "47 complaints with a demographic pattern is substantial evidence of a systematic fairness issue. This is not merely a complaints handling matter (option B) - it indicates discriminatory AI system performance. The volume and pattern make it more than an observation (option C). Under Annex A fairness controls and Clause 10.1 corrective action, this represents a major nonconformity."
+          explanation: "Forty-seven complaints with a clear demographic pattern indicate a systematic fairness failure that must be raised as a major nonconformity under Annex A fairness controls and Clause 10.2. Option B misroutes the issue to A.8 disclosure controls and improperly narrows AIMS audit scope. Option C downgrades a corrective-action-grade finding to an opportunity for improvement and misuses Clause 9.1 to defer treatment by another full cycle."
         },
         {
           question: "The behavioral analysis disproportionately flags students with disabilities. Under Annex A controls and the broader AIMS framework, what fundamental issue does this represent?",
           options: [
             "An AI impact assessment failure: the organization did not adequately assess how the system would perform across the full diversity of users, including those with disabilities, resulting in a system that penalizes disability-related behaviors as indicators of cheating",
-            "A data quality issue: the training data did not include sufficient examples of students with disabilities, and the model needs to be retrained with a more representative dataset",
-            "A scope definition issue: students with disabilities should be excluded from AI-based proctoring and offered alternative examination arrangements, removing the need to address this within the AIMS"
+            "An A.7.3 data preparation issue: training data lacked sufficient samples from students with disabilities, and the only treatment needed is to enrich the dataset and retrain the behavioral model under A.6.2 design controls",
+            "A Clause 4.3 scope boundary issue: students with disabilities should fall outside the AIMS scope and be routed to a separate accommodation process, removing the need for ExamSecure to address this within its AI governance"
           ],
           correct: 0,
-          explanation: "The fundamental issue is a failure in impact assessment: the system's effect on users with disabilities was not adequately considered during design and deployment. While data quality (option B) may be a contributing factor, the root issue is inadequate impact assessment. Excluding students with disabilities (option C) may be a short-term accommodation but does not address the systemic governance failure."
+          explanation: "The root issue is a failure of Clause 6.1.4 AI impact assessment to consider the system's effects on users with disabilities. Option B downgrades the issue to A.7.3 data preparation and a single retraining action, missing the governance failure. Option C misuses Clause 4.3 scope to exclude an interested-party group; scope cannot be redrawn to remove individuals affected by the AI system, and accommodation does not substitute for impact assessment."
         },
         {
           question: "A university partner suspended use of the system. Under Clause 4.2 and the management system framework, how should this be managed?",
           options: [
-            "Treat the suspension as a commercial contract issue to be handled by the sales team, since the university's decision to suspend is their prerogative and does not affect the AIMS",
+            "Route the suspension to account management as a Clause 7.4 external communication issue, since the partner is a customer rather than an interested party for AIMS purposes and Clause 4.2 only applies to regulators and standard-setting bodies",
             "Treat the suspension as relevant feedback from a key interested party that may indicate systemic issues with the AIMS, investigate the underlying concerns, assess the impact on other clients, and determine whether corrective actions to the AIMS are needed",
-            "Immediately notify all other university clients of the suspension and the reasons behind it, since transparency requires proactive disclosure of known issues to all interested parties"
+            "Use the suspension as a Clause 9.3 management review input only, escalate it to top management at the next quarterly review, and refrain from any AIMS-level investigation until the review formally tasks the team with one"
           ],
           correct: 1,
-          explanation: "A client suspension is significant interested party feedback that may indicate systemic AIMS issues. It should not be dismissed as purely commercial (option A). While transparency is important, immediate blanket notification (option C) may not be appropriate without first understanding the issues and determining the appropriate response."
+          explanation: "Clause 4.2 expressly includes customers as interested parties, and a client suspension is significant feedback that may signal systemic AIMS issues requiring investigation under Clause 10.2. Option A misclassifies the partner and confines response to Clause 7.4 communication. Option C misuses Clause 9.3 management review as a gating step and delays the Clause 10.2 corrective action obligation that applies as soon as a potential nonconformity is known."
         },
         {
           question: "The internal audit was conducted by a team member who developed the behavioral analysis algorithm. Under Clause 9.2, what issue does this present?",
           options: [
             "This violates the objectivity and impartiality requirement of Clause 9.2, since auditors must not audit their own work, compromising the reliability of the audit findings for the behavioral analysis component",
-            "This is acceptable if the team member has formal internal auditor training, since technical expertise in the audited area is valuable for identifying meaningful findings",
-            "This is a minor procedural issue that can be addressed by having the audit findings independently reviewed by another team member"
+            "This is acceptable under Clause 7.2 competence provided the team member completed certified ISO/IEC 19011 internal auditor training and the audit programme assigns a separate lead auditor to sign off on the findings",
+            "This is a Clause 9.3 management review issue rather than a Clause 9.2 independence breach: top management can ratify the audit results during the next review cycle, restoring confidence in the findings without rerunning the audit"
           ],
           correct: 0,
-          explanation: "Clause 9.2 requires auditor objectivity and impartiality, specifically that auditors do not audit their own work. Having the developer audit their own algorithm is a clear violation regardless of their training (option B). Independent review of findings (option C) does not remedy the independence violation - the audit itself was compromised."
+          explanation: "Clause 9.2.2 requires auditors to be objective and impartial and explicitly prohibits auditing one's own work. Option A confuses Clause 7.2 competence with Clause 9.2 impartiality; training and a co-signing lead auditor do not cure a structural conflict. Option C misuses Clause 9.3 management review, which evaluates AIMS performance but cannot retroactively legitimize an audit conducted in breach of Clause 9.2 independence."
         },
         {
           question: "Considering all findings, what is the most likely recertification audit outcome for ExamSecure?",
           options: [
             "The certification body will likely issue major nonconformities related to fairness, impact assessment, and audit independence, requiring satisfactory corrective actions within a defined period before recertification can be recommended, and may consider whether the severity warrants suspension of the existing certificate",
-            "The certification body will recommend recertification with conditions, as the organization has maintained a functioning AIMS for 18 months and the issues identified are improvement opportunities rather than fundamental conformity failures",
-            "The certification body will recommend immediate recertification since the organization has proactively identified issues during pre-audit preparation, demonstrating the AIMS is functioning as intended by detecting problems"
+            "The certification body will recommend recertification with a 90-day observation window, since 18 months of operating an AIMS qualifies the organization for renewal under ISO/IEC 17021-1 even when minor nonconformities remain open, provided action plans are submitted",
+            "The certification body will issue all four findings as opportunities for improvement and recommend immediate recertification, since ExamSecure self-identified the gaps before the audit and corrective action under Clause 10.2 can be deferred to the next surveillance audit"
           ],
           correct: 0,
-          explanation: "The findings are severe: discriminatory system performance with documented complaints, unaddressed disability impact, client suspension, and compromised audit independence. These represent major nonconformities, not improvement opportunities (option B). Proactive identification during preparation (option C) does not mitigate the severity of the underlying issues. The certification body may consider suspension given the potential harm to users."
+          explanation: "Discriminatory performance, missing impact assessment, a client suspension, and compromised audit independence are systemic failures that meet the threshold for major nonconformities under Clause 10.2 and Annex A controls. Option B misstates ISO/IEC 17021-1: tenure does not entitle an organization to renewal, and major NCs cannot be left open. Option C misclassifies major NCs as opportunities for improvement and improperly defers corrective action."
         }
       ]
     },
@@ -593,306 +593,306 @@ export const EXAM_2: Exam = {
           question: "An AI system uses a technique where a pre-trained model on general text data is adapted to perform medical document classification with a small labeled medical dataset. According to ISO/IEC 22989 concepts, this technique is best described as:",
           options: [
             "Transfer learning, where knowledge gained from training on one task is applied to a different but related task, reducing the need for large domain-specific training datasets",
-            "Few-shot learning, where the model learns to classify with very few examples by memorizing the specific medical documents provided",
-            "Federated learning, where the model combines knowledge from the general text domain and the medical domain through distributed training"
+            "Reinforcement learning, where an agent learns medical document categories through trial-and-error feedback signals from a reward function tuned to clinical correctness",
+            "Unsupervised representation learning, where the model discovers medical document clusters without any labels by exploiting structural similarity in the corpus alone"
           ],
           correct: 0,
-          explanation: "Transfer learning involves leveraging knowledge from a pre-trained model (on general text) and adapting it to a new domain (medical classification) with limited domain-specific data. Few-shot learning (option B) describes learning from very few examples but does not capture the pre-training aspect. Federated learning (option C) involves distributed training across multiple parties, which is a different concept."
+          explanation: "Transfer learning leverages knowledge from a pre-trained source task and adapts it to a related target task with limited labeled data, exactly matching the scenario. Reinforcement learning (option B) involves sequential decision-making with reward signals, not classification fine-tuning. Unsupervised representation learning (option C) uses no labels, which contradicts the 'small labeled medical dataset' described in the question."
         },
         {
           question: "What is the primary distinction between 'narrow AI' (weak AI) and the concept of 'general AI' (strong AI) as discussed in the AI standards ecosystem?",
           options: [
-            "Narrow AI operates with limited computational resources while general AI requires unlimited computational power",
+            "Narrow AI is restricted to running on edge devices, while general AI runs only in centralized cloud environments capable of orchestrating very large model parameters",
             "Narrow AI is designed and trained for specific tasks within defined boundaries, while general AI would theoretically possess the ability to understand, learn, and apply intelligence across any intellectual domain, similar to human cognitive ability",
-            "Narrow AI uses rule-based programming while general AI uses machine learning, making general AI inherently more capable"
+            "Narrow AI is regulated by ISO/IEC 42001 while general AI is excluded from the standard's scope because such systems are not yet commercially deployed"
           ],
           correct: 1,
-          explanation: "The distinction is about scope of capability: narrow AI excels within defined task boundaries, while general AI would theoretically match human cognitive breadth. It is not about computational resources (option A) or the specific technique used (option C)."
+          explanation: "The distinction is about scope of cognitive capability: narrow AI excels within defined task boundaries, while general AI would theoretically match human breadth across any domain. Option A invents a deployment-environment criterion that does not define the concepts. Option C is wrong because ISO/IEC 42001 applies to any organization providing or using AI systems regardless of generality, not just narrow AI."
         },
         {
           question: "ISO/IEC 23894 provides guidance on AI risk management. How does it complement ISO/IEC 42001?",
           options: [
-            "ISO/IEC 23894 provides the risk management methodology that is mandatory for ISO/IEC 42001 compliance, as Clause 6.1 directly references it",
+            "ISO/IEC 23894 defines the certifiable risk management requirements that auditors verify during Stage 2 audits of ISO/IEC 42001, while Clause 6.1 only sets the policy-level expectations",
             "ISO/IEC 23894 provides guidance on AI-specific risk management approaches that can inform how an organization implements the risk assessment and treatment requirements of ISO/IEC 42001 Clause 6.1, though the organization is not required to use this specific standard",
-            "ISO/IEC 23894 replaces the risk management requirements of ISO/IEC 42001 for organizations that have already implemented ISO 31000"
+            "ISO/IEC 23894 supersedes the AI impact assessment provisions of Clause 6.1.4 and is the only acceptable framework for organizations performing impact assessments on individuals and society"
           ],
           correct: 1,
-          explanation: "ISO/IEC 23894 provides guidance that can inform AIMS risk assessment, but it is not mandatory (option A) and does not replace ISO/IEC 42001 requirements (option C). Organizations may use ISO/IEC 23894 as guidance while implementing ISO/IEC 42001's risk-related requirements."
+          explanation: "ISO/IEC 23894 is guidance, not certifiable requirements (option A is wrong: ISO/IEC 42001 itself is the certifiable standard, and Clause 6.1 sets the actual risk requirements). Option C is wrong because Clause 6.1.4 on AI system impact assessment is binding and is not superseded by ISO/IEC 23894, which offers complementary guidance organizations may, but need not, adopt."
         },
         {
           question: "An organization uses an AI model ensemble that combines predictions from decision trees, neural networks, and support vector machines. What AI concept does this represent?",
           options: [
             "Model stacking, a specific ensemble technique where a meta-learner combines predictions from diverse base models to produce a final output with potentially higher accuracy and robustness",
-            "Multi-agent AI, where multiple autonomous AI agents collaborate to solve a problem that no single agent could solve alone",
-            "Hybrid AI, where symbolic and sub-symbolic AI approaches are combined to leverage the strengths of each paradigm"
+            "Knowledge distillation, where a single small student model is trained to imitate the combined behavior of decision trees, neural networks, and SVMs to reduce inference cost",
+            "Mixture of experts, where a single neural network gates inputs to specialized internal sub-networks trained jointly end-to-end on the same task"
           ],
           correct: 0,
-          explanation: "Combining predictions from diverse ML models is an ensemble approach (model stacking or blending). Multi-agent AI (option B) involves autonomous agents interacting, not model combination. Hybrid AI (option C) combines symbolic and sub-symbolic approaches, which is a different concept than combining multiple ML models."
+          explanation: "Combining predictions from heterogeneous learners is the canonical definition of stacking (an ensemble method). Knowledge distillation (option B) compresses one teacher into one student model and does not describe combining live predictions from multiple model types. Mixture of experts (option C) is a single jointly trained architecture with internal gating, not an ensemble of independently trained heterogeneous models."
         },
         // Domain 2 - AIMS Requirements (5 questions)
         {
           question: "ISO/IEC 42001 Clause 4.4 states the organization shall establish, implement, maintain, and continually improve the AIMS 'including the processes needed and their interactions.' What does 'their interactions' specifically require?",
           options: [
-            "Documenting formal communication protocols between all departments involved in AI activities",
+            "Producing a Clause 7.4 communication plan that documents the messaging cadence and channels between every department involved in AI activities and external interested parties",
             "Understanding and managing how AIMS processes affect each other, such as how risk assessment outputs feed into operational controls, how monitoring results inform management review, and how corrective actions lead to updated risk assessments",
-            "Establishing a process interaction matrix that maps every process to every other process, ensuring complete traceability"
+            "Defining a turtle diagram for each process and embedding it inside the Statement of Applicability so every Annex A control links back to a corresponding turtle diagram entry"
           ],
           correct: 1,
-          explanation: "Process interactions mean understanding how processes are interconnected and how outputs from one become inputs to another. This does not require formal communication protocols for every department (option A) or an exhaustive interaction matrix (option C), but rather practical understanding and management of key process relationships."
+          explanation: "Clause 4.4 is about understanding how AIMS processes feed each other (risk into controls, monitoring into management review, etc.). Option A confuses Clause 4.4 with the separate Clause 7.4 communication requirement. Option C invents a documentation form that ISO/IEC 42001 does not require: the SoA documents control applicability, not process maps, and turtle diagrams are not mandated."
         },
         {
           question: "Under the Harmonized Structure, what is the purpose of Clause 8 'Operation' in the AIMS?",
           options: [
-            "To define the day-to-day activities of the AI development team, including coding standards, testing procedures, and deployment checklists",
+            "To prescribe the engineering practices used inside the AI lifecycle, such as coding standards, unit-test coverage thresholds, and the specific MLOps tooling used to release models",
             "To require the organization to plan, implement, and control the processes needed to meet requirements and implement actions determined in planning, including establishing criteria for processes and implementing control according to those criteria",
-            "To specify the minimum number of operational staff required to maintain the AIMS and their specific qualifications"
+            "To consolidate performance evaluation activities such as monitoring, measurement, internal audit, and management review into a single operational clause for execution"
           ],
           correct: 1,
-          explanation: "Clause 8 requires planning, implementing, and controlling processes to meet requirements. It is about operational control of processes determined during planning, not about specific team activities (option A) or staffing requirements (option C)."
+          explanation: "Clause 8 is about operational planning and control of the processes the organization decided on in Clause 6. Option A wrongly turns Clause 8 into Annex A AI lifecycle controls (A.6) — engineering practices belong there, not in the management clause. Option C confuses Clause 8 with Clause 9 (Performance evaluation), which is the clause that actually contains monitoring, internal audit, and management review."
         },
         {
           question: "How do the normative annexes of ISO/IEC 42001 differ from informative annexes found in other standards?",
           options: [
             "Normative annexes are mandatory parts of the standard that must be followed, while informative annexes provide optional supplementary guidance",
-            "There is no practical difference; the term 'normative' is used interchangeably with 'informative' in ISO standards",
-            "Normative annexes must be read but not necessarily implemented, while informative annexes are the implementation-focused sections of the standard"
+            "Normative annexes contain the certification audit checklists used by certification bodies, while informative annexes contain the management system requirements organizations must meet",
+            "Normative annexes are reserved for terminology and abbreviations only, while informative annexes hold the technical controls organizations need to evaluate during risk treatment"
           ],
           correct: 0,
-          explanation: "Normative annexes form part of the standard's requirements and must be followed. Informative annexes provide supplementary guidance that is not mandatory. This distinction is significant because ISO/IEC 42001's Annexes A and B are normative, meaning their controls must be considered in the AIMS implementation."
+          explanation: "By ISO drafting rules, normative annexes carry requirements while informative annexes are guidance only. Option B inverts the meaning by claiming normative annexes are auditor checklists and informative ones hold the requirements. Option C wrongly limits normative annexes to terminology and places technical controls in informative annexes, when in ISO/IEC 42001 it is normative Annex A that holds the controls."
         },
         {
           question: "Under ISO/IEC 42001, what is the relationship between the main body clauses (4-10) and Annex A controls?",
           options: [
-            "Organizations must implement all Annex A controls to satisfy the main body requirements, as the controls provide the specific implementation details for each clause",
+            "The Annex A controls fully replace the main body clauses for organizations that adopt the SoA approach, since the SoA already records the controls that have been selected and justified",
             "The main body clauses establish the management system framework, and Annex A provides a reference set of controls that must be evaluated for applicability through the risk assessment and documented in the Statement of Applicability, with justification for inclusion or exclusion",
-            "Annex A controls are optional enhancements that organizations can implement to exceed the minimum requirements of the main body clauses"
+            "Annex A controls apply only to AI providers, while organizations that are AI users must instead rely on Annex B implementation guidance to satisfy the main body clauses for their own AIMS"
           ],
           correct: 1,
-          explanation: "The main body provides the management system framework, while Annex A provides controls to be evaluated for applicability. Not all controls must be implemented (option A) - they must be considered through risk assessment. They are not optional enhancements (option C) - they must be formally evaluated and documented in the SoA."
+          explanation: "Clauses 4-10 establish the management system; Annex A controls are evaluated for applicability through risk assessment and justified in the SoA. Option A is wrong because the SoA documents control choices but never replaces the main body requirements. Option C misuses the annexes: Annex A applies to all in-scope organizations regardless of role, and Annex B is implementation guidance that does not substitute for Clauses 4-10 either."
         },
         {
           question: "What is the significance of the term 'determined' as used in clauses like 'the organization shall determine...' throughout ISO/IEC 42001?",
           options: [
-            "'Determine' means the organization must formally document its decision in a controlled document approved by top management",
+            "'Determine' is a permissive verb equivalent to 'should consider', signalling that the organization may choose whether to address the requirement based on its own judgment of relevance",
             "'Determine' means the organization must actively analyze and decide, implying a deliberate process of assessment and decision-making rather than passive acknowledgment, though the form of documentation is not prescribed",
-            "'Determine' is synonymous with 'define' and simply means the organization must write down the requirement in their AIMS documentation"
+            "'Determine' requires the organization to set a single quantitative target value for the item in question and to record it as a key performance indicator monitored under Clause 9.1"
           ],
           correct: 1,
-          explanation: "'Determine' in ISO management system standards implies an active process of analysis and decision-making. It requires deliberate assessment, not just documentation (option A oversimplifies to documentation, option C equates it with simple definition). The form of the determination is flexible, but the process must be substantive."
+          explanation: "In ISO management system drafting rules, 'determine' is a 'shall'-level requirement to actively analyse and decide. Option A wrongly demotes it to permissive language; in ISO Directives 'should' is the recommendation verb, not 'determine'. Option C invents a quantitative-KPI obligation under Clause 9.1 that 'determine' does not impose: many things are determined (e.g., interested parties, scope) without becoming numeric KPIs."
         },
         // Domain 3 - Planning (10 questions)
         {
           question: "An organization operates in a country that has no AI-specific legislation. Under Clause 4.1, is the absence of AI regulation a relevant external issue?",
           options: [
-            "No, the absence of regulation means there are no external regulatory issues to consider for the AIMS",
+            "No, Clause 4.1 only requires the organization to track external issues that already create binding legal duties, so jurisdictions without AI law fall outside the context analysis",
             "Yes, the absence of regulation is itself a relevant external factor because it affects the organization's risk environment, may change as AI legislation develops globally, and means the organization must rely more heavily on voluntary standards and internal governance to ensure responsible AI use",
-            "Only if the organization exports AI services to jurisdictions that do have AI regulations"
+            "Only if the legal department escalates the topic during management review, since legal context is examined at the Clause 9.3 stage rather than determined upfront under Clause 4.1"
           ],
           correct: 1,
-          explanation: "The absence of regulation is a relevant external factor that shapes the governance environment. It does not mean there are no considerations (option A). While export to regulated jurisdictions is relevant (option C), the domestic regulatory vacuum itself affects how the organization must approach governance."
+          explanation: "Clause 4.1 covers any external issue relevant to the AIMS purpose, not only binding legal duties. Option A wrongly narrows Clause 4.1 to enacted law; emerging regulation, social expectations, and ethical norms are also in scope. Option C wrongly defers context analysis to Clause 9.3 management review: Clause 4.1 must be determined upfront and revisited, not raised only when escalated by legal."
         },
         {
           question: "Under Clause 6.1, the risk assessment must address 'risks and opportunities arising from the AI system.' An organization's AI system has been operating successfully for two years with no incidents. How should the risk assessment be maintained?",
           options: [
-            "The risk assessment can be archived since two years of incident-free operation demonstrates that risks have been adequately addressed and no updates are needed",
+            "The risk assessment can move to a five-year review cycle once two years of incident-free operation are evidenced, since long stable periods justify reduced review frequency under Clause 6.1",
             "The risk assessment must be periodically reviewed and updated to reflect changes in the AI system's operating environment, technology evolution, emerging threat patterns, regulatory changes, and operational experience, regardless of incident history",
-            "The risk assessment should be reviewed only when an incident occurs or a new AI system is deployed, since reviews without triggers consume resources without adding value"
+            "The risk assessment should be replaced by the AI system impact assessment under Clause 6.1.4, since impact assessments give a more user-centric view that supersedes the original Clause 6.1.2 risk analysis after deployment"
           ],
           correct: 1,
-          explanation: "Risk assessments must remain current regardless of incident history. No incidents does not mean no risks (option A). Reviewing only after incidents (option C) is reactive. The operating environment, technology, and regulatory landscape evolve continuously, requiring periodic reassessment."
+          explanation: "Risk assessments must stay current regardless of incident history; the operating environment, technology, and regulation keep evolving. Option A invents a five-year cycle Clause 6.1 does not authorise; the standard requires assessments to remain valid as conditions change. Option C wrongly treats the Clause 6.1.4 impact assessment as a replacement for the Clause 6.1.2 risk assessment, when the two are complementary and both must be maintained."
         },
         {
           question: "An organization's AIMS scope includes AI systems developed by an internal team and AI services consumed from cloud providers. Under Clause 4.3, which boundaries are most important to define?",
           options: [
-            "The geographic boundaries of the organization's offices where AI development and consumption occur",
+            "The boundaries derived solely from the data classification scheme, ensuring that any AI workflow handling confidential data is in scope and any workflow handling only public data is excluded",
             "The boundaries between what the organization controls (internal AI development, configuration, monitoring) and what it relies on third parties to provide (cloud AI model execution, infrastructure), including data flows and decision responsibilities at each boundary",
-            "The organizational chart boundaries showing which departments are within the AIMS scope and which are excluded"
+            "The boundaries between in-house AI roles named in Clause 5.3, with anything done by personnel outside those role descriptions automatically excluded from the AIMS scope statement"
           ],
           correct: 1,
-          explanation: "Scope boundaries should define the limits of the organization's control versus third-party dependencies. Geographic boundaries (option A) and organizational charts (option C) are elements but not the most important boundaries. Understanding where control transitions to dependency is crucial for determining which controls the organization can implement directly versus which require contractual or oversight arrangements."
+          explanation: "Clause 4.3 is concerned with control boundaries, especially where the organization hands off responsibility to third parties. Option A reduces scope to data sensitivity, ignoring AI-specific control transitions and shared responsibilities. Option C confuses Clause 4.3 boundaries with Clause 5.3 role assignments; scope is set by activities, products, and services covered by the AIMS, not by job titles, and outsourced work can still fall inside scope."
         },
         {
           question: "An organization sets an AI objective to 'ensure all AI models are deployed with documented risk assessments.' Under Clause 6.2, what is missing from this objective?",
           options: [
-            "Nothing is missing; this is a well-formed, measurable objective with a clear action and outcome",
+            "The objective is missing only an explicit alignment statement to the AI policy, since Clause 6.2 requires every objective to quote the relevant policy commitment verbatim before it can be considered valid",
             "The objective needs a timeframe for achievement, specification of who is responsible, definition of what 'documented risk assessment' includes, criteria for adequacy, and a monitoring mechanism to verify compliance",
-            "The objective should be expressed as a percentage target rather than an absolute requirement, since 100% compliance objectives are unrealistic"
+            "The objective is missing a commitment to use ISO/IEC 23894 as the named risk methodology, which Clause 6.2 requires for any objective that touches AI risk assessment activities"
           ],
           correct: 1,
-          explanation: "While the objective has a clear intent, it lacks specificity required by Clause 6.2: timeframe, responsibility, criteria for adequacy, and monitoring mechanism. It is not sufficient as stated (option A). Expressing it as a percentage (option C) would actually weaken the objective if the intent is full compliance."
+          explanation: "Clause 6.2 expects objectives to be measurable, monitored, time-bound, with assigned responsibility and adequacy criteria. Option A invents a verbatim-quotation rule; consistency with the policy is required, but Clause 6.2 does not mandate quoting it. Option C invents a citation requirement to ISO/IEC 23894, which is non-mandatory guidance and not referenced as obligatory by Clause 6.2."
         },
         {
           question: "An organization determines that its AI policy must address the use of AI in decisions that affect individual rights. Under Clause 5.2, what makes this policy commitment operational rather than aspirational?",
           options: [
-            "Including specific language about human rights in the policy document, which demonstrates the organization's commitment to ethical AI use",
+            "Mapping the policy commitment to one trustworthiness characteristic in the Annex B guidance and citing that characteristic in the policy text, so readers can locate the corresponding implementation guidance",
             "Ensuring the policy commitment translates into specific risk assessment criteria, operational controls, monitoring metrics, and defined procedures for human oversight in rights-affecting decisions",
-            "Having the policy signed by the CEO and communicated to all employees through an organizational announcement"
+            "Approving the AI policy through the management review meeting under Clause 9.3 each year, which converts a Clause 5.2 commitment into operational status once recorded in the review minutes"
           ],
           correct: 1,
-          explanation: "A policy commitment becomes operational when it drives specific actions throughout the management system: risk criteria, controls, monitoring, and procedures. Including language (option A) is necessary but not sufficient. Communication (option C) is required by Clause 5.2 but does not make the commitment operational."
+          explanation: "Operational policy commitments drive risk criteria, controls, monitoring, and oversight procedures across the AIMS. Option A confuses traceability to Annex B (informative guidance) with operational implementation; citing guidance does not make a commitment operational. Option C confuses Clause 5.2 (top management establishes the policy) with Clause 9.3 management review, which evaluates the AIMS but is not where policy becomes operational."
         },
         {
           question: "Under Clause 6.1.4, the organization must plan actions to address risks and opportunities. What is the relationship between risk treatment actions and the Statement of Applicability?",
           options: [
-            "Risk treatment actions are documented in the risk treatment plan, which is separate from the SoA; the SoA only lists which Annex A controls are applicable",
+            "Risk treatment actions are documented exclusively in the AI system impact assessment under Clause 6.1.4, while the SoA is produced separately for the certification audit and never references treatment actions",
             "Risk treatment actions should be supported by applicable Annex A controls documented in the SoA, creating a coherent link between identified risks, treatment decisions, and selected controls",
-            "The SoA replaces the need for a separate risk treatment plan, as each control entry in the SoA includes the risk treatment rationale"
+            "The SoA documents only excluded Annex A controls along with the rationale for exclusion, so risk treatment actions are tied to controls that are intentionally left out rather than to those that are applied"
           ],
           correct: 1,
-          explanation: "The risk treatment plan and SoA should be coherently linked: risks drive treatment decisions, which inform control selection documented in the SoA. They are not independent documents (option A) but they are also not substitutes for each other (option C). The relationship is one of coherent traceability from risk to treatment to control."
+          explanation: "The treatment plan and SoA must traceably connect risks, treatment decisions, and the controls applied. Option A wrongly equates risk treatment with the AI system impact assessment, which addresses impacts on individuals and society rather than treatment of organizational risks. Option C inverts the SoA's purpose: it lists all applicable controls (with justification), and exclusions are also justified, but the SoA is not limited to exclusions."
         },
         // Domain 4 - Implementation (8 questions)
         {
           question: "An organization implements Annex A controls for AI system testing and validation. The testing environment uses synthetic data that does not fully represent production conditions. Under Annex A controls, what risk does this create?",
           options: [
-            "Testing with synthetic data is inherently inadequate and all AI system testing must use production data to be valid under the AIMS framework",
+            "The principal risk is privacy regulation breach, since synthetic data is treated as personal data under most data protection laws and the testing environment is therefore non-compliant by default",
             "Synthetic testing data may not capture edge cases, distribution characteristics, or real-world variability present in production data, potentially resulting in validation results that do not accurately predict production performance, requiring documented understanding of synthetic data limitations and supplementary validation approaches",
-            "Synthetic data is acceptable for testing if it is statistically validated against production data distributions, and no additional controls are needed once this validation is performed"
+            "The Annex A data control (A.7.4) requires synthetic data only when production data is unavailable, so using synthetic data while production data exists is itself the nonconformity, regardless of representativeness"
           ],
           correct: 1,
-          explanation: "Synthetic data has inherent limitations that must be understood and managed. It is not inherently inadequate (option A) - synthetic data can be valuable for testing. However, relying solely on synthetic data without understanding its limitations (option C suggests one-time validation is sufficient) creates risks. Ongoing awareness of limitations and supplementary validation are needed."
+          explanation: "The core risk is poor representativeness, leading to validation that does not predict production behaviour; AIMS controls expect documented understanding of limitations and supplementary validation. Option A inverts privacy reality: synthetic data is normally generated to reduce privacy exposure, not increase it. Option C invents a fallback-only rule that Annex A controls on data quality and provenance do not impose."
         },
         {
           question: "Under Clause 7.2, the organization must ensure persons are competent. An AI data scientist has strong technical skills but no understanding of the AIMS framework. Is this person competent under Clause 7.2?",
           options: [
-            "Yes, technical competence in AI is the primary requirement, and AIMS framework knowledge is the responsibility of the management system team rather than technical staff",
+            "Yes, because Clause 7.2 only applies to staff with formal AIMS roles such as the AI risk officer, internal auditor, or top management; technical contributors are covered by the awareness requirement in Clause 7.3 instead",
             "The person has partial competence: Clause 7.2 requires competence relevant to the person's role affecting AIMS performance, which for an AI data scientist includes both technical AI skills and understanding of how their work contributes to AIMS objectives, controls, and requirements",
-            "No, all persons within the AIMS scope must have comprehensive understanding of every clause of ISO/IEC 42001 to be considered competent"
+            "No, ISO/IEC 42001 disqualifies any data scientist who has not completed an accredited Lead Implementer training programme, since accreditation is the primary form of evidence accepted under Clause 7.2"
           ],
           correct: 1,
-          explanation: "Competence under Clause 7.2 is role-specific. A data scientist needs technical skills and relevant AIMS understanding (not comprehensive knowledge of every clause, option C). Pure technical competence without AIMS awareness (option A) may lead to work that does not align with governance requirements. The required AIMS knowledge should be proportionate to the role."
+          explanation: "Clause 7.2 covers anyone whose work affects AIMS performance and requires role-relevant competence. Option A wrongly limits Clause 7.2 to dedicated AIMS roles and offloads technical staff to Clause 7.3 awareness, but data scientists clearly affect AIMS performance. Option C invents an accredited-training requirement; Clause 7.2 accepts education, training, or experience as evidence and does not name any specific course."
         },
         {
           question: "An organization uses automated CI/CD pipelines to deploy AI model updates. Under Clause 8.1 and Annex A controls, what governance requirement applies?",
           options: [
             "Automated deployment pipelines must include governance gates such as validation checks, performance verification against defined criteria, and approval mechanisms, with the automation itself subject to change management controls",
-            "Automated CI/CD pipelines are incompatible with AIMS operational controls since they bypass the human review required for AI system changes",
-            "CI/CD pipelines satisfy Clause 8.1 requirements automatically since they provide consistent, repeatable deployment processes with built-in version control"
+            "Clause 6.3 covers any change involving an automated pipeline, so the organization can rely on its planning of changes and is not required to add operational controls under Clause 8.1 for the deployment itself",
+            "Annex A's transparency control (A.8.2) is the primary governance requirement, since CI/CD pipelines mainly raise concerns about user-facing disclosures rather than operational deployment behaviour"
           ],
           correct: 0,
-          explanation: "Automated deployment can be compatible with AIMS but must include governance controls. Pipelines are not inherently incompatible (option B) nor do they automatically satisfy requirements (option C). The key is incorporating governance gates, validation, and approval mechanisms within the automated process."
+          explanation: "Pipelines must integrate governance gates, validation, performance checks, approvals, and be themselves under change control. Option B wrongly substitutes Clause 6.3 (planning of changes) for the operational planning and control required by Clause 8.1; both apply. Option C misuses A.8.2 transparency, which addresses information for users and impacted parties, not the operational deployment controls Clause 8.1 expects on the pipeline."
         },
         {
           question: "Under Clause 7.5, the organization must retain documented information as evidence of conformity. An organization claims that its AI system's 'self-documenting code' satisfies this requirement. Is this adequate?",
           options: [
-            "Self-documenting code satisfies the documented information requirement for technical aspects, since it provides a complete and current record of the AI system's implementation",
+            "Self-documenting code satisfies Clause 7.5 in full as long as the source repository is version-controlled, because Clause 7.5.3 accepts version-controlled artefacts as a complete substitute for written procedures and records",
             "Self-documenting code may contribute to documented information but is insufficient alone: Clause 7.5 requires documented information covering the management system processes, decisions, risk assessments, and operational controls, not just technical implementation",
-            "Self-documenting code is not recognized as a valid form of documented information under ISO/IEC 42001, which requires formal documents in PDF or controlled document format"
+            "Self-documenting code can replace policies and procedures but cannot replace the records required by Clause 7.5.3, so the organization must still produce written policies and procedures separately from any retained records"
           ],
           correct: 1,
-          explanation: "Documented information encompasses much more than code: risk assessments, management decisions, policies, procedures, and records. Self-documenting code addresses only the technical implementation dimension. ISO/IEC 42001 does not prescribe specific document formats (option C is wrong), but it requires comprehensive documentation beyond code."
+          explanation: "Documented information includes management system processes, decisions, risk assessments, and records, not just technical implementation. Option A wrongly equates version control with conformity to the Clause 7.5.3 control of documented information, which covers approval, distribution, and access, not just versioning. Option C inverts the categories: Clause 7.5 distinguishes documents (policies, procedures) and records, both of which are required, and self-documenting code replaces neither."
         },
         {
           question: "An organization has implemented Annex A controls for AI system monitoring but discovers that the monitoring only captures system-level metrics (uptime, latency) without AI-specific metrics (model performance, drift, fairness indicators). Under Annex A requirements, is this adequate?",
           options: [
-            "Yes, system-level monitoring is sufficient since AI systems are fundamentally software systems and standard IT monitoring captures the essential operational metrics",
+            "Yes, because Annex A.6 lifecycle controls only require that AI-specific metrics be collected during validation and verification before release; once a system is deployed, system-level monitoring is the expected operational view",
             "No, AI system monitoring must include AI-specific metrics that assess the system's continued fitness for purpose, including model performance against defined benchmarks, data drift indicators, fairness metrics, and output quality measures",
-            "Partially adequate, since system-level monitoring satisfies Clause 9.1 requirements and AI-specific metrics are additional considerations that can be addressed as part of continual improvement"
+            "Yes, since the Annex A controls for system monitoring address concept drift only, and ongoing operational monitoring of model performance, data drift, and fairness is delegated to the AI provider rather than being the AI user's responsibility"
           ],
           correct: 1,
-          explanation: "AI systems require monitoring beyond standard IT metrics. System-level monitoring alone (option A) misses AI-specific concerns like model performance and drift. AI-specific metrics are not just improvement opportunities (option C) - they are necessary for assessing whether the AI system continues to meet its intended purpose. Annex A controls for AI systems expect AI-appropriate monitoring."
+          explanation: "AI-specific metrics (model performance, drift, fairness, output quality) are required for ongoing fitness for purpose, not optional. Option A misreads Annex A.6 by limiting AI-specific metrics to pre-release activities; lifecycle controls also cover operation. Option C narrows monitoring to concept drift and offloads the rest to the provider, but Annex A makes the operating organization responsible for monitoring the AI systems it uses, regardless of provenance."
         },
         // Domain 5 - Monitoring (5 questions)
         {
           question: "Under Clause 9.2, the internal audit program must be planned. For an AIMS that has been operational for one year, what should the audit program for year two prioritize?",
           options: [
-            "Repeat the same audit schedule as year one to maintain consistency and enable year-over-year comparison of findings",
+            "Mirror the certification body's surveillance audit plan exactly, so internal audits cover the same clauses and Annex A controls in the same order, eliminating duplication of effort across the two programmes",
             "Adjust the audit program based on year one findings, areas of higher risk, processes that have changed, and any new AI systems or regulatory requirements, while ensuring complete coverage over the audit cycle",
-            "Focus exclusively on areas where nonconformities were found in year one, since these represent the highest-risk processes"
+            "Audit only the areas not covered during the certification audit in year one, since previously audited topics need not be revisited until the next three-year recertification cycle begins"
           ],
           correct: 1,
-          explanation: "The audit program should evolve based on experience, risk, and changes. Repeating the same schedule (option A) does not incorporate lessons learned. Focusing only on previous findings (option C) may miss new risks. An adjusted program that considers multiple factors while maintaining comprehensive coverage is most appropriate."
+          explanation: "Clause 9.2 requires a risk-, importance- and change-based programme that ensures full coverage over the cycle. Option A subordinates the internal programme to the external surveillance schedule, but Clause 9.2 makes the internal audit the organization's own independent assurance. Option C invents a three-year carve-out: certification audits do not exempt areas from internal audit, and Clause 9.2 still requires planned coverage of the AIMS."
         },
         {
           question: "During management review under Clause 9.3, the AIMS manager presents a 'green status' for all monitoring indicators. What should top management's response be?",
           options: [
-            "Accept the positive results and focus the management review on strategic planning and new initiatives rather than operational performance",
+            "Treat the green status as confirmation that no opportunities for improvement remain, since Clause 9.3 inputs only require management review action when adverse trends are reported by the AIMS manager",
             "Critically assess whether the monitoring indicators and thresholds are still appropriate, whether the metrics actually reflect AIMS effectiveness, and whether any areas are not being adequately measured, since uniformly positive results may indicate measurement gaps rather than perfect performance",
-            "Request an independent verification of the monitoring results before accepting them, since all-green status reports are inherently suspicious"
+            "Defer the management review until the next internal audit under Clause 9.2 has been completed, since green status cannot be relied on without an internal audit having tested the underlying evidence first"
           ],
           correct: 1,
-          explanation: "Uniformly positive results warrant critical examination of whether the metrics and thresholds are appropriate. Management should assess measurement adequacy, not just results. Simply accepting (option A) misses the opportunity for meaningful review. Independent verification (option C) may be useful but the fundamental question is whether the right things are being measured."
+          explanation: "Clause 9.3 requires top management to evaluate suitability, adequacy, and effectiveness, including the appropriateness of metrics, not merely accept reported status. Option A misreads Clause 9.3 inputs, which include opportunities for improvement irrespective of whether trends are adverse. Option C invents a sequencing rule: management review and internal audit are independent processes, and Clause 9.3 is not gated on a fresh Clause 9.2 audit each cycle."
         },
         {
           question: "An organization conducts performance evaluation of its AI system's fairness metrics under Clause 9.1. The metrics show equal average performance across demographic groups, but the variance differs significantly. What should the evaluation conclude?",
           options: [
-            "Equal averages demonstrate fairness, and variance differences are statistical artifacts that do not require action",
+            "Equal demographic-parity averages already satisfy the fairness objective, so the variance differences belong to the data quality control under A.7.4 rather than to the Clause 9.1 fairness evaluation that has just been performed",
             "The evaluation should examine whether different variance levels mean some groups experience more unpredictable outcomes than others, which may constitute inequitable service quality even if average performance is equal",
-            "Variance analysis is a statistical refinement beyond what Clause 9.1 requires, and should be addressed only if the organization chooses to go beyond minimum monitoring requirements"
+            "Variance differences should be reclassified as nonconformities under Clause 10.2 immediately, with corrective action raised against the model developer, since any inter-group variance gap is automatically a fairness failure"
           ],
           correct: 1,
-          explanation: "Equal averages can mask inequitable experiences when variance differs. Higher variance for some groups means more unpredictable outcomes, which is itself a fairness concern. This is not beyond minimum requirements (option C) - it is a meaningful dimension of fairness evaluation. Dismissing variance differences (option A) may leave inequitable outcomes unaddressed."
+          explanation: "Inter-group variance can imply inequitable service quality even when averages match, and Clause 9.1 expects the evaluation to interpret these results. Option A wrongly redirects the finding to A.7.4 data quality, which addresses dataset properties rather than deployed model fairness behaviour. Option C jumps prematurely to Clause 10.2 nonconformity treatment: not every variance gap is automatically a nonconformity, and Clause 9.1 first requires evaluation, not corrective action."
         },
         {
           question: "Under Clause 9.1, when should the organization evaluate the effectiveness of the AIMS itself, as distinct from evaluating AI system performance?",
           options: [
-            "AIMS effectiveness is evaluated during the certification audit by the external audit team, not by the organization internally",
+            "AIMS effectiveness is determined exclusively through the internal audit programme under Clause 9.2, with Clause 9.1 reserved for monitoring AI system technical performance such as accuracy, latency, and uptime",
             "The organization should periodically evaluate whether the AIMS is achieving its intended outcomes, including whether the management system processes are functioning effectively, whether risks are being adequately managed, and whether objectives are being met",
-            "AIMS effectiveness is automatically demonstrated when AI system performance metrics meet their targets, since the management system's purpose is to produce well-performing AI systems"
+            "AIMS effectiveness is evaluated only at the start of each three-year certification cycle, since stability is a precondition of certification and intra-cycle evaluation would invite scope changes"
           ],
           correct: 1,
-          explanation: "AIMS effectiveness evaluation is the organization's responsibility (not just external auditors, option A). It assesses the management system itself, not just AI system outputs (option C). The evaluation should examine whether processes function, risks are managed, and objectives are met."
+          explanation: "Clause 9.1 obliges the organization itself to periodically evaluate AIMS performance and effectiveness, including processes, risk management, and objectives. Option A wrongly carves Clause 9.1 down to AI system technical metrics and offloads effectiveness to Clause 9.2 audits; both clauses contribute, but Clause 9.1 explicitly covers AIMS effectiveness. Option C invents a once-per-cycle limit; effectiveness must be evaluated at planned intervals across the cycle."
         },
         {
           question: "An internal audit under Clause 9.2 finds that the organization's AI risk register has not been updated for eight months despite several changes to AI systems. The AIMS manager argues that the risk register captures strategic risks that do not change frequently. How should the auditor respond?",
           options: [
-            "Accept the AIMS manager's explanation if the risk register covers strategic risks that are genuinely stable, since not all risk registers require frequent updates",
+            "Defer judgement and refer the finding to top management for resolution at the next Clause 9.3 management review, since auditors are not authorised under Clause 9.2 to characterise risk-management gaps without prior management consultation",
             "Raise a finding: the risk register should reflect the current risk landscape including the impact of changes to AI systems, and eight months without update despite system changes suggests the risk assessment process is not responsive to changes as required by Clause 6.1",
-            "Recommend updating the risk register but classify this as an observation since the risk register exists and contains relevant content even if outdated"
+            "Issue an opportunity for improvement asking the AIMS manager to align the risk register with the AI system impact assessment schedule under Clause 6.1.4, treating Clause 6.1 risk registers as a downstream artefact of impact assessments"
           ],
           correct: 1,
-          explanation: "Changes to AI systems should trigger risk reassessment. A risk register unchanged for eight months despite AI system changes indicates the risk assessment process is not responsive to change. The AIMS manager's argument (option A) does not justify ignoring the impact of system changes. This is more than an observation (option C) since it represents a gap in the required risk management process."
+          explanation: "Clause 6.1 requires risk assessment to remain current as AI systems change; eight months without update during such changes is a finding. Option A misreads Clause 9.2: auditors are required to report findings independently and are not bound to defer them to Clause 9.3. Option C inverts the relationship between Clause 6.1 risk assessment and Clause 6.1.4 AI system impact assessment; the risk register is not a downstream artefact of impact assessments."
         },
         // Domain 6 - Improvement & Audit (5 questions)
         {
           question: "Under ISO/IEC 17021-1, what is the relationship between the certification body and the organization during the certification process?",
           options: [
-            "The certification body acts as a consultant that helps the organization achieve conformity, providing guidance during audits on how to improve the management system",
+            "The certification body and the accreditation body share oversight of the organization's AIMS, which means corrective actions agreed during audits must be approved by the accreditation body before they are accepted",
             "The certification body independently assesses conformity without providing consulting services, maintaining impartiality by evaluating the AIMS against requirements without advising on implementation",
-            "The certification body and the organization form a partnership where both parties work together toward certification, sharing responsibility for the audit outcome"
+            "The certification body acts as the AIMS process owner during the audit cycle, taking custody of the SoA and risk treatment plan to verify ongoing conformity between audit visits"
           ],
           correct: 1,
-          explanation: "ISO/IEC 17021-1 requires certification bodies to maintain impartiality by not providing consulting services. The relationship is one of independent assessment, not consulting (option A) or partnership (option C). This separation ensures the credibility of the certification."
+          explanation: "ISO/IEC 17021-1 establishes the certification body as an independent third-party assessor that must avoid consulting and remain impartial. Option A wrongly inserts the accreditation body into corrective action approval; accreditation bodies oversee certification bodies, not an organization's corrective actions. Option C wrongly transfers ownership of AIMS artefacts to the certification body, when responsibility for the AIMS always remains with the certified organization."
         },
         {
           question: "An organization identifies a nonconformity related to inadequate AI model documentation. Under Clause 10.1, the corrective action must include determining the cause. What constitutes adequate root cause analysis for this nonconformity?",
           options: [
-            "Identifying that the documentation was inadequate because the data scientist responsible did not follow the documentation procedure, and retraining the individual",
+            "Recording the immediate correction (adding the missing pages to the model card) and treating that correction as the root cause analysis output, since restoring conformity is the primary purpose of corrective action under Clause 10.2",
             "Investigating why documentation was inadequate by examining whether documentation procedures are clear, whether templates and tools support efficient documentation, whether competence requirements include documentation skills, whether time and resources are allocated for documentation, and whether the culture values documentation as part of AI quality",
-            "Documenting that the root cause was 'insufficient documentation' and implementing a corrective action to 'improve documentation,' which addresses the finding directly"
+            "Forecasting future documentation gaps as preventive action under Clause 6.1 and replacing the root cause analysis with that forward-looking risk assessment, since the original nonconformity is already remediated through correction"
           ],
           correct: 1,
-          explanation: "Root cause analysis should look beyond the immediate symptom to systemic factors. Blaming an individual (option A) does not address why the system allowed the gap. Circular root cause statements (option C) do not actually identify the cause. A thorough investigation of processes, tools, competence, resources, and culture identifies addressable systemic factors."
+          explanation: "Root cause analysis must examine systemic factors so the cause can be eliminated and recurrence prevented. Option A confuses 'correction' (fixing the symptom) with the cause-determination step required for corrective action; ISO 9000 distinguishes these explicitly. Option C confuses corrective action with preventive thinking and Clause 6.1 risk treatment; corrective action under Clause 10.2 still requires investigation of the actual cause, not its replacement by a risk assessment."
         },
         {
           question: "During a surveillance audit, the auditor requests evidence of continual improvement but the organization presents only corrective actions taken in response to nonconformities. Under Clause 10.2, is this adequate evidence of continual improvement?",
           options: [
-            "Yes, corrective actions demonstrate that the organization addresses problems and improves, which is the essence of continual improvement",
+            "Yes, provided each corrective action carries an effectiveness review at 30 days under Clause 10.2, those reviewed corrective actions are sufficient evidence of continual improvement at the surveillance audit",
             "No, continual improvement encompasses proactive enhancements beyond just fixing problems, including improvements driven by monitoring analysis, management review decisions, industry developments, technological advances, and stakeholder feedback that improve the suitability, adequacy, and effectiveness of the AIMS",
-            "Yes, as long as the corrective actions have been verified as effective, since effective corrective actions prevent recurrence and thereby improve the management system"
+            "No, but only because surveillance audits target only one third of the AIMS each year; once recertification is reached, accumulated corrective actions across the cycle become acceptable evidence of continual improvement on their own"
           ],
           correct: 1,
-          explanation: "Continual improvement goes beyond corrective actions (which are reactive). It includes proactive enhancements driven by various inputs. Corrective actions are one element (not the whole, option A). Effective corrective actions (option C) prevent recurrence but do not demonstrate the proactive improvement dimension of Clause 10.2."
+          explanation: "Continual improvement under Clause 10.1 is broader than corrective action and must include proactive enhancement driven by monitoring, management review, and external inputs. Option A invents a fixed 30-day effectiveness review; even with effectiveness reviews, corrective action alone remains reactive and is not full evidence. Option C wrongly ties continual improvement to recertification accumulation; Clause 10.1 applies continuously, not only at recertification."
         },
         {
           question: "An organization is preparing for its initial Stage 1 audit. The audit team requests access to the AI policy, scope statement, risk assessment, SoA, and evidence of management commitment. The organization provides all documents except the risk assessment, explaining it is still being finalized. What is the likely Stage 1 outcome?",
           options: [
-            "The Stage 1 audit cannot proceed without a completed risk assessment, and the audit must be cancelled and rescheduled",
+            "The auditors will issue a major nonconformity at Stage 1 and require closure within six months before any Stage 2 booking, applying the same nonconformity rules used at Stage 2 effectiveness audits",
             "The auditors will note the incomplete risk assessment as a significant gap that must be resolved before Stage 2 can be scheduled, since risk assessment is fundamental to the AIMS and its absence indicates the management system design is not complete",
-            "The auditors will proceed with Stage 1 and include the risk assessment review in Stage 2, since Stage 1 is primarily a documentation review and the risk assessment is an operational document"
+            "The auditors will accept the incomplete risk assessment if the AI system impact assessment under Clause 6.1.4 has been completed instead, since the impact assessment can substitute for the risk assessment at Stage 1"
           ],
           correct: 1,
-          explanation: "Stage 1 evaluates readiness for Stage 2. An incomplete risk assessment is a significant gap since it is fundamental to AIMS design. The audit can still proceed (option A is too extreme) but the gap will be flagged as requiring resolution before Stage 2. Deferring risk assessment review to Stage 2 (option C) mischaracterizes Stage 1's purpose - it must evaluate whether the management system design is adequate."
+          explanation: "Stage 1 evaluates readiness for Stage 2; missing risk assessment is a significant gap to resolve before Stage 2 can be scheduled. Option A wrongly applies the Stage 2 major nonconformity model with a six-month closure clock to Stage 1, which under ISO/IEC 17021-1 produces readiness findings, not formal majors. Option C wrongly substitutes the Clause 6.1.4 impact assessment for the Clause 6.1.2 risk assessment; the two address different concerns and the risk assessment cannot be skipped."
         },
         {
           question: "Under the certification audit process, what is the purpose of opening and closing meetings?",
           options: [
             "The opening meeting confirms audit scope, objectives, methods, and logistics with the organization's management, while the closing meeting presents audit findings, conclusions, and the recommendation, ensuring transparency and giving the organization the opportunity to clarify any factual inaccuracies",
-            "The opening meeting is a formality required by ISO/IEC 17021-1 to record attendance, while the closing meeting is the substantive session where the audit team presents its certification recommendation",
-            "The opening meeting establishes the consulting relationship between the audit team and the organization, while the closing meeting summarizes the improvement recommendations provided during the audit"
+            "The opening meeting is where the audit team negotiates the audit criteria with the organization to ensure each finding is mutually agreed in advance, while the closing meeting confirms the certification decision the certification body has already issued earlier that week",
+            "The opening meeting selects the sample of Annex A controls to be reviewed during fieldwork at the auditee's discretion, while the closing meeting decides which findings to include in the report after a vote between auditors and the organization's management"
           ],
           correct: 0,
-          explanation: "Both meetings serve important purposes: the opening meeting sets expectations and confirms scope, while the closing meeting presents findings and allows the organization to address factual issues. Neither is merely a formality (option B), and the audit team does not provide consulting (option C)."
+          explanation: "Opening meetings confirm scope, objectives, and methods; closing meetings present findings and allow factual clarification while preserving auditor judgement. Option B wrongly turns the opening meeting into criteria negotiation and pre-positions a certification decision before the closing meeting, but ISO/IEC 17021-1 requires the certification decision to be made by the certification body separately, after the audit. Option C wrongly hands sampling and finding-acceptance to the auditee, undermining auditor independence and the impartiality required by ISO/IEC 17021-1."
         }
       ]
     }
